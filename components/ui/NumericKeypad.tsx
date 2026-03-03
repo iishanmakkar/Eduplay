@@ -64,6 +64,7 @@ export default function NumericKeypad({
                 {['1', '2', '3', '4', '5', '6', '7', '8', '9'].map((key) => (
                     <button
                         key={key}
+                        type="button"
                         onClick={() => handlePress(key)}
                         disabled={disabled}
                         className="h-16 text-2xl font-bold bg-white dark:bg-fixed-dark text-gray-800 dark:text-white hover:bg-gray-50 dark:hover:bg-fixed-medium border-2 border-gray-100 dark:border-border rounded-xl shadow-sm transition-all active:scale-95 disabled:opacity-50"
@@ -76,6 +77,7 @@ export default function NumericKeypad({
             {/* Bottom Row: Negative, Zero, Backspace */}
             <div className="grid grid-cols-3 gap-2 mb-2">
                 <button
+                    type="button"
                     onClick={() => handlePress('-')}
                     disabled={disabled}
                     className="h-16 text-2xl font-bold bg-gray-50 dark:bg-fixed-dark text-gray-800 dark:text-white hover:bg-gray-100 dark:hover:bg-fixed-medium border-2 border-gray-200 dark:border-border rounded-xl shadow-sm transition-all active:scale-95 disabled:opacity-50"
@@ -83,6 +85,7 @@ export default function NumericKeypad({
                     ±
                 </button>
                 <button
+                    type="button"
                     onClick={() => handlePress('0')}
                     disabled={disabled}
                     className="h-16 text-2xl font-bold bg-white dark:bg-fixed-dark text-gray-800 dark:text-white hover:bg-gray-50 dark:hover:bg-fixed-medium border-2 border-gray-100 dark:border-border rounded-xl shadow-sm transition-all active:scale-95 disabled:opacity-50"
@@ -90,6 +93,7 @@ export default function NumericKeypad({
                     0
                 </button>
                 <button
+                    type="button"
                     onClick={onDelete}
                     disabled={disabled}
                     className="h-16 text-2xl font-bold bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-900/30 border-2 border-red-100 dark:border-red-800 rounded-xl shadow-sm transition-all active:scale-95 disabled:opacity-50 flex items-center justify-center"
@@ -101,6 +105,7 @@ export default function NumericKeypad({
             {/* Action Row: Clear & Submit */}
             <div className="grid grid-cols-3 gap-2">
                 <button
+                    type="button"
                     onClick={onClear}
                     disabled={disabled}
                     className="h-16 text-xl font-bold bg-orange-50 dark:bg-orange-900/20 text-orange-600 dark:text-orange-400 hover:bg-orange-100 dark:hover:bg-orange-900/30 border-2 border-orange-100 dark:border-orange-800 rounded-xl shadow-sm transition-all active:scale-95 disabled:opacity-50"
@@ -108,6 +113,7 @@ export default function NumericKeypad({
                     C
                 </button>
                 <button
+                    type="button"
                     onClick={onSubmit}
                     disabled={disabled}
                     className="col-span-2 h-16 bg-emerald-500 hover:bg-emerald-600 text-white text-xl font-bold rounded-xl shadow-md transition-all active:scale-95 disabled:opacity-50"

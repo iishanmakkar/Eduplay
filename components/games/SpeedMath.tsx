@@ -72,8 +72,13 @@ export default function SpeedMath({
         const allowNegatives = gradeConfig.allowNegatives && difficulty >= 3
         const maxRange = gradeConfig.maxNumberRange
 
-        // Fetch curriculum templates from PB
-        const templates = await fetchCurriculumTemplates('SPEED_MATH')
+        // Fetch curriculum templates — fall back to empty array if DB unavailable
+        let templates: any[] = []
+        try {
+            templates = await fetchCurriculumTemplates('SPEED_MATH')
+        } catch {
+            // DB not available (CI / first-deploy) — generate questions without templates
+        }
         const activeTemplates = templates.filter((t: any) => t.difficulty === diffString)
 
         for (let i = 0; i < count; i++) {
