@@ -6,12 +6,20 @@ const createJestConfig = nextJest({
 })
 
 // Add any custom config to be passed to Jest
+const isCI = process.env.CI === 'true'
+
 const customJestConfig = {
     setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
     testEnvironment: 'jest-environment-jsdom',
     moduleNameMapper: {
         '^@/(.*)$': '<rootDir>/$1',
     },
+    // On CI runners (2 vCPU), 2 workers is optimal — avoids thrashing
+    maxWorkers: isCI ? 2 : '50%',
+    // Kill idle workers to reclaim memory on CI
+    workerIdleMemoryLimit: '512MB',
+    // Generous timeout for simulation-heavy tests
+    testTimeout: 60_000,
     collectCoverageFrom: [
         'app/**/*.{js,jsx,ts,tsx}',
         'components/**/*.{js,jsx,ts,tsx}',

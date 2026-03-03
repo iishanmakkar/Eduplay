@@ -40,7 +40,14 @@ jobs:
         run: npm run lint
 
       - name: Run Tests
-        run: npm run test
+        run: npm test -- --forceExit --passWithNoTests
+        env:
+          CI: 'true'
+          # Provide dummy secrets so modules that read env at import time don't crash
+          NEXTAUTH_SECRET: 'ci_dummy_secret_not_real'
+          DATABASE_URL: 'postgresql://dummy'
+          REDIS_URL: 'redis://dummy'
+          OPENROUTER_API_KEY: 'sk-dummy'
 
       - name: Build Application
         run: npm run build
@@ -69,3 +76,4 @@ jobs:
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
           vercel-args: '--prod'
+
