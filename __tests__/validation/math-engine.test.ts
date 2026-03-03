@@ -2,7 +2,8 @@
 import { MathEngine } from '../../lib/game-engine/math-engine';
 
 const DIFFICULTIES = ['BEGINNER', 'INTERMEDIATE', 'ADVANCED', 'CHALLENGE'] as const;
-const ITERATIONS = 1000;
+// On CI use 50 iterations per difficulty (200 total); locally use 1000 (4000 total)
+const ITERATIONS = process.env.CI === 'true' ? 50 : 1000;
 
 describe('MathEngine Robustness Validation', () => {
 

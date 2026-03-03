@@ -42,9 +42,6 @@ jobs:
       - name: Run Tests
         timeout-minutes: 8
         run: |
-          # --runInBand: single process, no worker OOM crashes on 7GB CI runner.
-          # timeout 420 kills Jest if it somehow hangs post-test (open handles).
-          # exit 124 = timeout fired but tests passed → treat as success.
           timeout 420 npm test -- --runInBand --forceExit --passWithNoTests || {
             EXIT=$?
             if [ $EXIT -eq 124 ]; then
@@ -57,16 +54,17 @@ jobs:
           CI: 'true'
           NEXTAUTH_SECRET: 'ci_dummy_secret_not_real'
           DATABASE_URL: 'postgresql://dummy'
-          REDIS_URL: 'redis://dummy'
+          REDIS_URL: 'https://dummy.upstash.io'
+          REDIS_TOKEN: 'dummy_token'
           OPENROUTER_API_KEY: 'sk-dummy'
 
       - name: Build Application
         run: npm run build
         env:
           NEXT_TELEMETRY_DISABLED: 1
-          # Dummy envs to pass Next build-time evaluations
           DATABASE_URL: "postgresql://dummy"
-          REDIS_URL: "redis://dummy"
+          REDIS_URL: "https://dummy.upstash.io"
+          REDIS_TOKEN: "dummy_token"
           NEXTAUTH_SECRET: "dummy_secret_for_build"
           OPENROUTER_API_KEY: "dummy"
 
