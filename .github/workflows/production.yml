@@ -40,10 +40,10 @@ jobs:
         run: npm run lint
 
       - name: Run Tests
+        timeout-minutes: 8
         run: npm test -- --forceExit --passWithNoTests
         env:
           CI: 'true'
-          # Provide dummy secrets so modules that read env at import time don't crash
           NEXTAUTH_SECRET: 'ci_dummy_secret_not_real'
           DATABASE_URL: 'postgresql://dummy'
           REDIS_URL: 'redis://dummy'
