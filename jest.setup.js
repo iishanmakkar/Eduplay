@@ -1,28 +1,16 @@
 import '@testing-library/jest-dom'
 
-// ── Global teardown: close all open handles so Jest exits cleanly ─────────────
-// Without this, Prisma (and any lazy-loaded Redis clients) keep event loops
-// alive indefinitely, causing Jest to hang after all tests PASS.
-afterAll(async () => {
-    // 1. Disconnect any Prisma clients that were instantiated during tests
-    try {
-        // Dynamically require to avoid top-level side effects
-        // eslint-disable-next-line
-        const { prisma } = require('@/lib/prisma')
-        if (prisma && typeof prisma.$disconnect === 'function') {
-            await prisma.$disconnect()
-        }
-    } catch {
-        // Prisma may not have been loaded in this test run — safe to ignore
-    }
-
-    // 2. Clear any lingering timers (setInterval / setTimeout in modules)
-    // jest.clearAllTimers() only clears mocked timers. For real timers we use
-    // process._getActiveHandles() introspection to spot and unref them.
+// ── Global teardown: unref open handles so Node exits cleanly ─────────────────
+// Prisma, Redis, and other lazy-loaded modules leave alive handles in the event
+// loop even after tests finish. We do NOT call $disconnect() here because the
+// CI DATABASE_URL is a dummy value — connecting would hang. Instead we just
+// unref() every active OS handle so they no longer block the process from exiting.
+afterAll(() => {
     if (typeof process._getActiveHandles === 'function') {
         process._getActiveHandles().forEach((h) => {
             if (typeof h.unref === 'function') h.unref()
         })
     }
 })
+
 

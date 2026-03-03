@@ -40,8 +40,8 @@ jobs:
         run: npm run lint
 
       - name: Run Tests
-        timeout-minutes: 8
-        run: npm test -- --forceExit --passWithNoTests
+        timeout-minutes: 10
+        run: npm test -- --runInBand --forceExit --passWithNoTests
         env:
           CI: 'true'
           NEXTAUTH_SECRET: 'ci_dummy_secret_not_real'
