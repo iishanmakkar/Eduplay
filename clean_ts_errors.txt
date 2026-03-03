@@ -1,0 +1,4 @@
+Option '--incremental' can only be specified using tsconfig, emitting to single file or when option '--tsBuildInfoFile' is specified.
+lib/governance/ai-cost.ts (52,18): Type '"ENTERPRISE"' is not comparable to type 'SubscriptionPlan | undefined'.
+lib/governance/ai-cost.ts (53,18): Type '"PREMIUM"' is not comparable to type 'SubscriptionPlan | undefined'.
+lib/governance/ai-cost.ts (54,18): Type '"FREE"' is not comparable to type 'SubscriptionPlan | undefined'.

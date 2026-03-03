@@ -1,0 +1,261 @@
+/**
+ * Smartboard Mode Styles
+ * Large UI optimized for classroom smartboards
+ */
+
+.smartboard-mode {
+    /* Typography - 2x larger */
+    --font-size-xs: 24px;
+    --font-size-sm: 28px;
+    --font-size-base: 32px;
+    --font-size-lg: 40px;
+    --font-size-xl: 48px;
+    --font-size-2xl: 64px;
+    --font-size-3xl: 80px;
+    --font-size-4xl: 96px;
+
+    /* Spacing - Larger gaps */
+    --spacing-xs: 8px;
+    --spacing-sm: 16px;
+    --spacing-md: 24px;
+    --spacing-lg: 32px;
+    --spacing-xl: 48px;
+    --spacing-2xl: 64px;
+
+    /* Components - Minimum sizes */
+    --button-height: 100px;
+    --button-min-width: 200px;
+    --input-height: 80px;
+    --icon-size: 64px;
+
+    /* High contrast colors */
+    --color-contrast-ratio: 1.5;
+}
+
+/* Base text sizing */
+.smartboard-mode {
+    font-size: var(--font-size-base);
+    line-height: 1.6;
+}
+
+.smartboard-mode h1 {
+    font-size: var(--font-size-4xl);
+    font-weight: 900;
+    line-height: 1.2;
+}
+
+.smartboard-mode h2 {
+    font-size: var(--font-size-3xl);
+    font-weight: 800;
+}
+
+.smartboard-mode h3 {
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+}
+
+.smartboard-mode p {
+    font-size: var(--font-size-lg);
+}
+
+/* Buttons - Extra large and touch-friendly */
+.smartboard-mode button,
+.smartboard-mode .btn {
+    min-height: var(--button-height);
+    min-width: var(--button-min-width);
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    padding: var(--spacing-lg) var(--spacing-xl);
+    border-radius: 24px;
+    border-width: 4px;
+}
+
+.smartboard-mode button:hover,
+.smartboard-mode .btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Inputs - Large and clear */
+.smartboard-mode input[type="text"],
+.smartboard-mode input[type="number"],
+.smartboard-mode textarea {
+    min-height: var(--input-height);
+    font-size: var(--font-size-xl);
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-radius: 16px;
+    border-width: 4px;
+}
+
+/* Icons - Larger */
+.smartboard-mode .icon,
+.smartboard-mode svg {
+    width: var(--icon-size);
+    height: var(--icon-size);
+}
+
+/* Cards - Larger spacing */
+.smartboard-mode .card {
+    padding: var(--spacing-2xl);
+    border-radius: 32px;
+    border-width: 4px;
+}
+
+/* Game Elements */
+.smartboard-mode .question-text {
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: var(--spacing-xl);
+}
+
+.smartboard-mode .answer-option {
+    min-height: 120px;
+    font-size: var(--font-size-xl);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+    border-radius: 20px;
+    border-width: 4px;
+}
+
+.smartboard-mode .score-display {
+    font-size: var(--font-size-3xl);
+    font-weight: 900;
+}
+
+.smartboard-mode .timer {
+    font-size: var(--font-size-2xl);
+    font-weight: 800;
+}
+
+/* Competition Bar - Thicker */
+.smartboard-mode .competition-bar {
+    height: 80px;
+    border-radius: 40px;
+}
+
+/* Player Names - Larger */
+.smartboard-mode .player-name {
+    font-size: var(--font-size-2xl);
+    font-weight: 800;
+}
+
+/* Avatars - Larger */
+.smartboard-mode .player-avatar {
+    font-size: 80px;
+}
+
+/* High Contrast Mode */
+.smartboard-mode.high-contrast {
+    --color-bg: #000000;
+    --color-text: #FFFFFF;
+    --color-primary: #FFD700;
+    --color-secondary: #00FFFF;
+    --color-success: #00FF00;
+    --color-error: #FF0000;
+}
+
+.smartboard-mode.high-contrast button {
+    border: 4px solid var(--color-text);
+    background: var(--color-primary);
+    color: var(--color-bg);
+}
+
+.smartboard-mode.high-contrast .answer-option {
+    border: 4px solid var(--color-text);
+    background: var(--color-bg);
+    color: var(--color-text);
+}
+
+.smartboard-mode.high-contrast .answer-option:hover {
+    background: var(--color-primary);
+    color: var(--color-bg);
+}
+
+/* No Hover States - Touch only */
+.smartboard-mode *:hover {
+    cursor: pointer;
+}
+
+/* Remove subtle effects that don't work on smartboards */
+.smartboard-mode {
+    --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.15);
+    --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.2);
+    --shadow-lg: 0 12px 36px rgba(0, 0, 0, 0.25);
+}
+
+/* Fullscreen Mode */
+.smartboard-mode.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    background: white;
+    overflow: hidden;
+}
+
+/* No Scrolling */
+.smartboard-mode {
+    overflow: hidden;
+}
+
+.smartboard-mode .scrollable {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Simplified Layout - No complex grids */
+.smartboard-mode .complex-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+/* Progress Bars - Thicker */
+.smartboard-mode .progress-bar {
+    height: 32px;
+    border-radius: 16px;
+}
+
+/* Badges - Larger */
+.smartboard-mode .badge {
+    font-size: var(--font-size-lg);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: 12px;
+}
+
+/* Combo Indicator - Huge */
+.smartboard-mode .combo-indicator {
+    font-size: var(--font-size-4xl);
+    font-weight: 900;
+}
+
+/* Victory Screen - Extra large */
+.smartboard-mode .victory-title {
+    font-size: 128px;
+    font-weight: 900;
+}
+
+.smartboard-mode .victory-score {
+    font-size: var(--font-size-3xl);
+}
+
+/* Mobile Override - Smartboard mode works on tablets too */
+@media (max-width: 768px) {
+    .smartboard-mode {
+        --font-size-base: 24px;
+        --button-height: 80px;
+        --input-height: 64px;
+    }
+}
+
+/* Ultra-wide screens (smartboards) */
+@media (min-width: 1920px) {
+    .smartboard-mode {
+        --font-size-base: 40px;
+        --button-height: 120px;
+        --input-height: 100px;
+    }
+}

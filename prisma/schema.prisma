@@ -1,0 +1,1121 @@
+// Prisma Schema for EduPlay SaaS Platform
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+enum UserRole {
+  STUDENT
+  TEACHER
+  SCHOOL
+  OWNER
+  INDEPENDENT
+}
+
+enum ConsentStatus {
+  NOT_REQUIRED // Adults / Users >= 13
+  PENDING // Under 13, awaiting parent verification
+  APPROVED // Under 13, parent verified
+  REJECTED // Under 13, parent denied
+}
+
+enum SubscriptionPlan {
+  STARTER
+  SCHOOL
+  DISTRICT
+}
+
+enum SubscriptionStatus {
+  ACTIVE
+  CANCELED
+  PAST_DUE
+  TRIALING
+}
+
+enum GameType {
+  // ── Existing 25 Games ──────────────────────────────────────────────────────
+  SPEED_MATH
+  SCIENCE_QUIZ
+  WORLD_FLAGS
+  MEMORY_MATCH
+  WORD_SCRAMBLE
+  SPELLING_BEE
+  COUNTING_BUBBLES
+  TUG_OF_WAR
+  LOGIC_PUZZLE
+  PATTERN_SEQUENCE
+  MEMORY_GRID_ADV
+  FOCUS_REACTION
+  MINI_STRATEGY
+  CREATIVE_THINKING
+  CODE_BREAKER
+  MATH_GRID
+  VISUAL_ROTATION
+  SEQUENCE_BUILDER
+  ANALOGY_GAME
+  ATTENTION_SWITCH
+  TIME_PLANNER
+  SHAPE_CONSTRUCTOR
+  RIDDLE_SPRINT
+  LOGIC_GRID
+  KIDS_TYPING
+  TYPING_SPEED
+
+  // ── Mathematics ────────────────────────────────────────────────────────────
+  NUMBER_CATERPILLAR       // KG-2: Counting 1-20
+  HOT_AIR_BALLOON_RACE     // KG-2: Addition 1-digit
+  APPLE_ORCHARD_COLLECTOR  // KG-2: Number Recognition
+  FISH_TANK_FILL           // KG-2: Subtraction 1-digit
+  SHAPE_SORTER_CITY        // KG-2: 2D Shapes
+  PIZZA_SLICE_WARS         // 3-5: Fractions
+  DECIMAL_DODGE            // 3-5: Decimals & Ordering
+  MARKET_MAYHEM            // 3-5: Money & Arithmetic
+  FACTOR_FORTRESS          // 3-5: Factors & Multiples
+  FRACTION_ARROW_ARCHER    // 3-5: Fractions on Number Line
+  RATIO_RAIL_RUSH          // 3-5: Ratio & Proportion
+  MULTIPLIER_MAYHEM        // 3-5: Multiplication
+  ANGLE_ASSASSIN           // 6-8: Angles & Geometry
+  ALGEBRA_WAVE_SURFER      // 6-8: Linear Equations
+  AREA_CONSTRUCTOR         // 6-8: Area & Mensuration
+  INTEGER_ICE_BATTLE       // 6-8: Integers
+  DATA_DETECTIVE           // 6-8: Statistics & Data
+  PROBABILITY_POKER        // 6-8: Probability
+  COORDINATE_COMBAT        // 6-8: Coordinate Geometry
+  POLYNOMIAL_PACKAGER      // 6-8: Polynomials
+  CALCULUS_CLIFF           // 9-12: Derivatives
+  QUADRATIC_QUEST          // 9-12: Quadratic Equations
+  TRIG_BRIDGE_BUILDER      // 9-12: Trigonometry
+  MATRIX_MORPH_DUEL        // 9-12: Matrices
+  INTEGRAL_INVADER         // 9-12: Integration
+  VECTOR_SPACE_VOYAGER     // 9-12: Vectors
+  STATISTICS_STOCK_PROPHET // 9-12: Statistics & Probability
+  NUMBER_THEORY_VAULT      // 9-12: Number Theory
+  COMPLEX_NAVIGATOR        // 9-12: Complex Numbers
+  PERMUTATION_COASTER      // 9-12: Permutation & Combination
+
+  // ── English / Language ─────────────────────────────────────────────────────
+  PHONICS_POND_HOP         // KG-2: Phonics & Alphabet
+  LETTER_LASSO             // KG-2: Letter Recognition
+  VOWEL_VILLAGE            // KG-2: Vowels & Consonants
+  GRAMMAR_GLADIATOR        // 3-5: Grammar & Parts of Speech
+  SYNONYM_SWITCHBLADE      // 3-5: Synonyms & Antonyms
+  TENSE_TREKKER           // 3-5: Tenses
+  PUNCTUATION_RUSH         // 3-5: Punctuation
+  IDIOM_HUNTER             // 3-5: Idioms & Proverbs
+  COMPREHENSION_CODEBREAKER // 3-5: Reading Comprehension
+  PARTS_OF_SPEECH_DUEL     // 6-8: Parts of Speech
+  SENTENCE_SURFBOARD       // 6-8: Sentence Formation
+  ESSAY_ENGINEER           // 6-8: Essay Structure
+  SHAKESPEARE_SHOWDOWN     // 9-12: Literature Analysis
+  LITERARY_DEVICE_LAB      // 9-12: Figures of Speech
+  ETYMOLOGY_EXPLORER       // 9-12: Etymology & Vocabulary
+  RHETORIC_RANKER          // 9-12: Rhetoric & Persuasion
+  PRECIS_PRESSURE          // 9-12: Précis Writing
+
+  // ── Science ────────────────────────────────────────────────────────────────
+  PLANT_POWER_GROWER       // KG-2: Plants & Life Science
+  WEATHER_WARDROBE         // KG-2: Weather & Climate
+  ANIMAL_KINGDOM_SORTER    // KG-2: Animal Classification
+  SOLAR_SYSTEM_DEFENDER    // 3-5: Solar System
+  FOOD_CHAIN_ARENA         // 3-5: Food Chains
+  CIRCUIT_RACER            // 3-5: Electricity & Circuits
+  MATTER_PHASE_SHIFTER     // 3-5: States of Matter
+  MAGNET_MAZE              // 3-5: Magnetism
+  PERIODIC_BATTLESHIP      // 6-8: Periodic Table
+  CELL_DIVISION_DERBY      // 6-8: Cell Division
+  FORCE_MOTION_DOJO        // 6-8: Newton's Laws
+  WATER_CYCLE_WIZARD       // 6-8: Water Cycle
+  REACTION_RATE_LAB        // 6-8: Chemical Reactions
+  GENETICS_GENOME_DUEL     // 6-8: Genetics & Heredity
+  ELECTROSTATICS_ARENA     // 9-12: Electrostatics
+  THERMODYNAMIC_TURBO      // 9-12: Gas Laws
+  EVOLUTION_ISLAND         // 9-12: Evolution
+  ORGANIC_CHEM_ARCHITECT   // 9-12: Organic Chemistry
+  ASTROPHYSICS_ODYSSEY     // 9-12: Astrophysics
+  OPTICS_RAY_RACER         // 9-12: Optics
+  WAVE_DUEL                // 9-12: Wave Physics
+  TITRATION_TOURNAMENT     // 9-12: Acid-Base Chemistry
+
+  // ── Social Studies ─────────────────────────────────────────────────────────
+  MY_TOWN_EXPLORER         // KG-2: Community & EVS
+  CIVILIZATION_BUILDER     // 3-5: Ancient History
+  LANDFORM_LANDER          // 3-5: Geography & Landforms
+  DEMOCRACY_DEBATE         // 3-5: Civics & Democracy
+  TRADE_ROUTE_TYCOON       // 6-8: Economics & Trade
+  MAP_MASTERY_MISSION      // 6-8: World Geography
+  CONSTITUTION_COURTROOM   // 6-8: Civics & Constitution
+  EMPIRE_FALL              // 6-8: World History Empires
+  CURRENT_AFFAIRS_CLASH    // 6-8: Current Affairs
+  CLIMATE_COMMANDER        // 6-8: Climate & Environment
+  MACRO_ECONOMY_MASTER     // 9-12: Macroeconomics
+  GEOPOLITICS_GRAND        // 9-12: World Affairs
+  HISTORIANS_COURTROOM     // 9-12: World History Analysis
+  MICRO_MARKET_MAKER       // 9-12: Microeconomics
+  COLONIAL_CONSEQUENCE     // 9-12: Modern History
+
+  // ── Computer Science ───────────────────────────────────────────────────────
+  ALGORITHM_ANT            // KG-2: Algorithms & Sequencing
+  BINARY_BLASTER           // 3-5: Binary Numbers
+  WEB_WEAVER               // 3-5: HTML Basics
+  PYTHON_PUZZLE_PATH       // 3-5: Python Basics
+  CYBER_SHIELD             // 6-8: Cybersecurity
+  LOGIC_GATE_GARDEN        // 6-8: Logic Gates
+  DATA_STRUCTURE_DUNGEON   // 6-8: Data Structures
+  ALGORITHM_ARENA          // 6-8: Algorithms & Sorting
+  AI_TRAINING_GROUND       // 9-12: AI & Machine Learning
+  ENCRYPTION_ESCAPE        // 9-12: Cryptography
+  NETWORK_TOPOLOGY_RACER   // 9-12: Computer Networks
+  DEBUG_DUEL               // 9-12: Debugging & Logic
+
+  // ── Hindi / Regional Languages ─────────────────────────────────────────────
+  VARNAMALA_VILLAGE        // KG-2: Hindi Varnamala
+  MATRA_MELODY             // KG-2: Hindi Matras
+  KAAVYA_COLOR             // KG-2: Hindi Word Recognition
+  SHABDKOSH_SPRINT         // 3-5: Hindi Vocabulary
+  VYAKARAN_WARRIOR         // 3-5: Hindi Grammar
+  HINDI_HAIKU_FACTORY      // 3-5: Hindi Poetry
+  ANUVAAD_ARENA            // 6-8: Hindi-English Translation
+  KAHANI_KHATAM_KARO       // 6-8: Hindi Comprehension
+  REGIONAL_SCRIPT_DECODER  // 6-8: Regional Scripts
+  NIBANDH_NINJA            // 9-12: Hindi Essay Writing
+  NATYA_SHASTRA_SCENE      // 9-12: Hindi Literature
+  SAMASA_SOLVER            // 9-12: Hindi Samasa Grammar
+
+  // ── General Knowledge & Life Skills ───────────────────────────────────────
+  FLAG_FIESTA              // KG-2: National Flags
+  COIN_COLLECTOR           // KG-2: Financial Basics
+  CAPITALS_CONQUEST        // 3-5: World Capitals
+  INVENTORS_WORKSHOP       // 3-5: Inventions & Inventors
+  NATIONAL_SYMBOLS_DASH    // 3-5: National Symbols
+  EQ_MAZE                  // 3-5: Emotional Intelligence
+  BUDGET_BATTLE            // 6-8: Financial Literacy
+  TIME_AUDIT_CHALLENGE     // 6-8: Time Management
+  CURRENT_AFFAIRS_DETECTIVE // 6-8: Current Affairs & GK
+  CRITICAL_THINKERS_COURT  // 9-12: Critical Thinking
+  CAREER_STRATEGIST        // 9-12: Life Skills & Career
+
+  // ── Simulation Games ───────────────────────────────────────────────────────
+  SHOP_IT_UP               // 3-5: Financial Literacy & Math
+  CITY_PLANNER_PRO         // 6-8: Geography, Civics & Math
+  COUNTRY_COMMANDER        // 9-12: Economics, Politics & Math
+  VIRTUAL_CHEM_LAB         // 6-12: Chemistry Lab Procedure
+  SPACE_MISSION_CONTROL    // 9-12: Physics, Math, Astronomy
+  STOCK_MARKET_SAVANT      // 9-12: Economics & Statistics
+  ECO_FARM_MANAGER         // 6-8: Biology, Geography, Math
+  BODY_MECHANIC            // 6-8: Human Biology
+  POWER_GRID_ENGINEER      // 9-12: Physics, Environment
+  BIOREACTOR_BRAINIAC      // 9-12: Biology & Chemistry
+  NUTRITION_KITCHEN        // 3-5: Biology, Health, Math
+  WILDLIFE_RESERVE_RANGER  // 6-8: Ecology & Geography
+  GLOBAL_NEGOTIATOR        // 9-12: Geopolitics, Economics
+  BRIDGE_ARCHITECT_BLITZ   // 9-12: Physics & Engineering
+  PUBLIC_HEALTH_STRATEGIST // 9-12: Biology, Math, Social Studies
+
+  // ── Cross‑Curricular & Special ─────────────────────────────────────────────
+  MULTILINGUAL_WORD_STORM  // 6-12: World Languages
+  PHYSICS_OF_MUSIC         // 6-8: Wave Physics & Music
+  LOGIC_CHAIN_REACTION     // 9-12: Logic & Critical Thinking
+  GEOSPY                   // 6-12: World Geography
+  FAKE_NEWS_FORENSICS      // 6-12: Media Literacy
+  ETHICS_ENGINE            // 9-12: Philosophy & Ethics
+  CLIMATE_TIME_MACHINE     // 6-12: Climate Science
+  DEBATE_DOJO              // 9-12: Critical Thinking & English
+  CRISIS_ROOM              // 9-12: World History
+  FLUID_DYNAMICS_SURFER    // 9-12: Physics (Fluids)
+  SURVEYORS_SPRINT         // 9-12: Coordinate Geometry
+  CULTURAL_COMPASS         // 3-8: World Culture & GK
+  OLYMPIAD_QUALIFIER       // 9-12: Advanced Math
+}
+
+
+enum Subject {
+  MATH
+  ENGLISH
+  SCIENCE
+  GEOGRAPHY
+}
+
+enum GradeBand {
+  BAND_1 // K-2 (Ages 5-7)
+  BAND_2 // 3-5 (Ages 8-10)
+  BAND_3 // 6-8 (Ages 11-13)
+  BAND_4 // 9-10 (Ages 14-16)
+  BAND_5 // 11-12 (Ages 16-18)
+}
+
+// ==================== CORE ENTITIES ====================
+
+model School {
+  id           String    @id @default(cuid())
+  name         String
+  slug         String    @unique
+  domain       String?   @unique
+  logo         String?
+  schoolRegion String?   @default("US") // ISO 3166-1 alpha-2 country code, e.g. 'IN', 'US', 'GB' — for data residency
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  deletedAt    DateTime? // Soft delete timestamp
+
+  // Relations
+  users        User[]        @relation("SchoolUsers")
+  classes      Class[]
+  subscription Subscription?
+  usageMetrics UsageMetric[]
+  ApiKey       ApiKey[]
+  inviteCodes  InviteCode[]
+
+  @@index([domain])
+  @@index([createdAt])
+  @@index([schoolRegion])
+}
+
+model User {
+  id               String    @id @default(cuid())
+  name             String?
+  firstName        String?
+  lastName         String?
+  email            String    @unique
+  emailVerified    DateTime?
+  image            String?
+  avatar           String?
+  password         String?
+  role             UserRole  @default(STUDENT)
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+  googleId         String?   @unique
+  schoolId         String?
+  teacherId        String?
+  twoFactorEnabled Boolean   @default(false)
+  twoFactorSecret  String?
+
+  // Data Privacy & COPPA Compliance
+  dob           DateTime?
+  parentEmail   String?
+  consentStatus ConsentStatus @default(NOT_REQUIRED)
+  analyticsId   String?       @unique @default(cuid())
+  deletedAt     DateTime? // Soft delete marker
+
+  // Relations
+  school                  School?                  @relation("SchoolUsers", fields: [schoolId], references: [id])
+  teacher                 User?                    @relation("TeacherStudents", fields: [teacherId], references: [id])
+  students                User[]                   @relation("TeacherStudents")
+  
+  // Teacher relations
+  classesTeaching         Class[]                  @relation("ClassTeacher")
+  assignmentsCreated      Assignment[]
+
+  // Student relations
+  classesEnrolled         ClassStudent[]
+  gameResults             GameResult[]
+  badges                  Badge[]
+  streakData              Streak?
+
+  independentSubscription IndependentSubscription?
+  matchParticipants       MatchParticipant[]
+  accounts                Account[]
+  sessions                Session[]
+  auditLogs               AuditLog[]
+
+  // Retention mechanics
+  challengeCompletions    ChallengeCompletion[]
+  achievements            UserAchievement[]
+  emailLogs               EmailLog[]
+  invitesSent             Invite[]
+  difficultyProgressions  DifficultyProgression[]
+  analyticsEvents         AnalyticsEvent[]
+
+  // 2FA
+  twoFactorBackupCodes String[]
+
+  // AI Knowledge Graph
+  skillMasteries         UserSkillMastery[]
+
+  // Gamification & Cognitive Blueprint
+  xp        Int        @default(0)
+  level     Int        @default(1)
+  epr       Int        @default(1000) // EduPlay Rating
+  gradeBand GradeBand? // Cognitive Band assigned
+  ApiKey    ApiKey[]
+
+  // Invite codes created by teacher
+  inviteCodesCreated    InviteCode[]            @relation("TeacherInviteCodes")
+
+  // Referral System
+  referralLink          ReferralLink?
+  referralReward        ReferralReward?         @relation("ReferredUser")
+
+  @@index([schoolId])
+  @@index([schoolId, xp(sort: Desc)])
+}
+
+model UserAnalytics {
+  id        String @id @default(cuid())
+  pseudonym String @default("Anonymous Learner")
+  totalXp   Int    @default(0)
+
+  // For telemetry without PII
+  gameResults GameResult[] @relation("AnalyticsGames")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model Class {
+  id        String   @id @default(cuid())
+  name      String
+  grade     String
+  subject   Subject?
+  emoji     String   @default("📚")
+  classCode String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  schoolId String
+  school   School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+
+  teacherId String
+  teacher   User   @relation("ClassTeacher", fields: [teacherId], references: [id], onDelete: Cascade)
+
+  students    ClassStudent[]
+  assignments Assignment[]
+  inviteCodes InviteCode[]
+
+  @@index([classCode])
+  @@index([teacherId])
+  @@index([schoolId])
+  @@index([schoolId, createdAt])
+  @@index([teacherId, createdAt])
+}
+
+model ClassStudent {
+  id       String   @id @default(cuid())
+  joinedAt DateTime @default(now())
+
+  classId String
+  class   Class  @relation(fields: [classId], references: [id], onDelete: Cascade)
+
+  studentId String
+  student   User   @relation(fields: [studentId], references: [id], onDelete: Cascade)
+
+  @@unique([classId, studentId])
+  @@index([studentId])
+}
+
+// ==================== ASSIGNMENTS & GAMES ====================
+
+model Standard {
+  id          String   @id @default(cuid())
+  code        String   @unique // e.g., "CCSS.MATH.CONTENT.3.OA.A.1" or "CBSE.MATH.CLASS3.1.2"
+  description String
+  subject     Subject
+  grade       String   // e.g., "3" or "3-5"
+  country     String?  // Optional for country-specific standards ("US", "IN")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  templates   QuestionTemplate[]
+}
+
+model QuestionTemplate {
+  id          String   @id @default(cuid())
+  gameType    GameType
+  parameters  Json     // Defaults, generator rules, or raw JSON defining question generation constraints
+  difficulty  String   @default("MEDIUM") // EASY, MEDIUM, HARD
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  standardId  String
+  standard    Standard @relation(fields: [standardId], references: [id], onDelete: Cascade)
+
+  @@index([standardId])
+  @@index([gameType, difficulty])
+}
+
+model Assignment {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  gameType    GameType
+  dueDate     DateTime
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  classId String
+  class   Class  @relation(fields: [classId], references: [id], onDelete: Cascade)
+
+  teacherId String
+  teacher   User   @relation(fields: [teacherId], references: [id], onDelete: Cascade)
+
+  gameResults GameResult[]
+
+  @@index([classId])
+  @@index([teacherId])
+  @@index([dueDate])
+  @@index([classId, dueDate])
+}
+
+model GameResult {
+  id          String     @id @default(cuid())
+  gameType    String
+  score       Int
+  accuracy    Float
+  timeSpent   Int
+  xpEarned    Int
+  completedAt DateTime   @default(now())
+  gradeBand   GradeBand? // Cognitive band at time of taking
+  eprDelta    Int        @default(0) // EPR rating change
+
+  // Brain Boost specific fields
+  reactionTime  Int? // Average reaction time in ms (for FOCUS_REACTION)
+  difficulty    String? @default("MEDIUM") // EASY, MEDIUM, HARD
+  hintsUsed     Int?    @default(0) // For MINI_STRATEGY
+  creativeScore Float? // Teacher rating 0-10 (for CREATIVE_THINKING)
+  storyContent  String? // For CREATIVE_THINKING
+
+  // PII Linked Context
+  studentId    String
+  student      User        @relation(fields: [studentId], references: [id], onDelete: Cascade)
+
+  // Anonymized Context
+  analyticsId String?
+  analytics   UserAnalytics? @relation("AnalyticsGames", fields: [analyticsId], references: [id], onDelete: SetNull)
+
+  assignmentId String?
+  assignment   Assignment?       @relation(fields: [assignmentId], references: [id])
+  matchId      String?
+  match        MultiplayerMatch? @relation(fields: [matchId], references: [id])
+
+  @@unique([matchId, studentId]) // Prevent duplicate submissions for the same multiplayer match
+  @@index([studentId])
+  @@index([analyticsId])
+  @@index([gameType])
+  @@index([completedAt])
+  @@index([studentId, completedAt])
+  @@index([studentId, gameType]) // Optimization for Adaptive Difficulty
+}
+
+// ==================== GAMIFICATION ====================
+
+model Badge {
+  id          String   @id @default(cuid())
+  name        String
+  description String
+  icon        String
+  earnedAt    DateTime @default(now())
+
+  studentId String
+  student   User   @relation(fields: [studentId], references: [id], onDelete: Cascade)
+
+  @@index([studentId])
+}
+
+model Streak {
+  id            String   @id @default(cuid())
+  currentStreak Int      @default(0)
+  longestStreak Int      @default(0)
+  lastPlayedAt  DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  studentId String @unique
+  student   User   @relation(fields: [studentId], references: [id], onDelete: Cascade)
+}
+
+model Leaderboard {
+  id          String   @id @default(cuid())
+  studentId   String
+  studentName String
+  totalXP     Int
+  weeklyXP    Int
+  rank        Int
+  weekStart   DateTime
+  updatedAt   DateTime @updatedAt
+
+  @@unique([studentId, weekStart])
+  @@index([weekStart, weeklyXP]) // Composite index for rank queries (weeklyXP desc at query time)
+  @@index([weeklyXP])
+}
+
+// ==================== BILLING & REGIONAL PRICING ====================
+
+model Currency {
+  code         String  @id // e.g., 'USD', 'INR', 'EUR', 'GBP'
+  symbol       String
+  exchangeRate Float   @default(1.0)
+  taxRate      Float?  @default(0.0)
+  locale       String
+
+  regionalPrices        RegionalPrice[]
+  independentPayments   IndependentPaymentTransaction[]
+  schoolPayments        PaymentTransaction[]
+}
+
+model RegionalPrice {
+  id           String           @id @default(cuid())
+  plan         SubscriptionPlan
+  countryCode  String
+  currencyCode String
+  price        Float
+  
+  currency     Currency         @relation(fields: [currencyCode], references: [code])
+  
+  @@unique([plan, countryCode])
+  @@index([currencyCode])
+}
+
+// School-level subscription
+model Subscription {
+  id                     String             @id @default(cuid())
+  plan                   SubscriptionPlan
+  status                 SubscriptionStatus
+  stripeCustomerId       String?            @unique
+  stripeSubscriptionId   String?            @unique
+  razorpaySubscriptionId String?            @unique
+  currentPeriodStart     DateTime?
+  currentPeriodEnd       DateTime?
+  cancelAtPeriodEnd      Boolean            @default(false)
+  seats                  Int?               @default(100) // Caps learners for B2B deals
+  pricePerSeat           Int?               // In smallest currency form, empty = flat fee
+  trialStartedAt         DateTime? // For trial countdown
+  trialEndsAt            DateTime?
+  cancelledAt            DateTime?
+  createdAt              DateTime           @default(now())
+  updatedAt              DateTime           @updatedAt
+
+  schoolId     String               @unique
+  school       School               @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  transactions PaymentTransaction[]
+
+  @@index([status])
+  @@index([stripeCustomerId])
+}
+
+// Per-user subscription for Independent students (₹500/month)
+model IndependentSubscription {
+  id                     String             @id @default(cuid())
+  status                 SubscriptionStatus
+  razorpaySubscriptionId String?            @unique
+  razorpayCustomerId     String?
+  billingCycle           String             @default("MONTHLY") // 'MONTHLY', 'ANNUAL'
+  currentPeriodStart     DateTime?
+  currentPeriodEnd       DateTime?
+  cancelAtPeriodEnd      Boolean            @default(false)
+  trialEndsAt            DateTime?
+  cancelledAt            DateTime?
+  createdAt              DateTime           @default(now())
+  updatedAt              DateTime           @updatedAt
+
+  userId       String                          @unique
+  user         User                            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  transactions IndependentPaymentTransaction[]
+
+  @@index([status])
+  @@index([userId])
+}
+
+model IndependentPaymentTransaction {
+  id                String   @id @default(cuid())
+  amount            Int // in smallest unit (e.g. paise, cents)
+  currencyCode      String   @default("INR")
+  currencyObj       Currency @relation(fields: [currencyCode], references: [code])
+  status            String // success, failed, pending
+  razorpayPaymentId String?  @unique
+  razorpayOrderId   String?
+  razorpaySignature String?
+  description       String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  subscriptionId String
+  subscription   IndependentSubscription @relation(fields: [subscriptionId], references: [id], onDelete: Cascade)
+
+  @@index([subscriptionId])
+  @@index([razorpayPaymentId])
+}
+
+model PaymentTransaction {
+  id                String   @id @default(cuid())
+  amount            Int
+  currencyCode      String
+  currencyObj       Currency @relation(fields: [currencyCode], references: [code])
+  status            String // success, failed, pending
+  razorpayPaymentId String?  @unique
+  razorpayOrderId   String?
+  razorpaySignature String?
+  description       String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  subscriptionId String
+  subscription   Subscription @relation(fields: [subscriptionId], references: [id], onDelete: Cascade)
+
+  @@index([subscriptionId])
+  @@index([razorpayPaymentId])
+}
+
+// ==================== RETENTION MECHANICS ====================
+
+model DailyChallenge {
+  id          String   @id @default(cuid())
+  date        DateTime @unique
+  gameType    GameType
+  difficulty  String // EASY, MEDIUM, HARD
+  bonusXP     Int      @default(50)
+  description String
+  createdAt   DateTime @default(now())
+
+  completions ChallengeCompletion[]
+
+  @@index([date])
+}
+
+model ChallengeCompletion {
+  id          String   @id @default(cuid())
+  userId      String
+  challengeId String
+  completedAt DateTime @default(now())
+  score       Int
+  earnedXP    Int
+
+  user      User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  challenge DailyChallenge @relation(fields: [challengeId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, challengeId])
+  @@index([userId])
+  @@index([completedAt])
+}
+
+model Achievement {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  description String
+  icon        String
+  xpReward    Int
+  rarity      String // COMMON, RARE, EPIC, LEGENDARY
+  category    String // STREAK, PERFORMANCE, SOCIAL, MILESTONE
+  condition   Json // { type: "streak", value: 7 }
+  createdAt   DateTime @default(now())
+
+  unlocks UserAchievement[]
+
+  @@index([category])
+  @@index([rarity])
+}
+
+model UserAchievement {
+  id            String      @id @default(cuid())
+  userId        String
+  user          User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  achievementId String
+  achievement   Achievement @relation(fields: [achievementId], references: [id], onDelete: Cascade)
+  unlockedAt    DateTime    @default(now())
+
+  @@unique([userId, achievementId])
+  @@index([userId])
+}
+
+// ==================== SECURITY & LOGGING ====================
+
+model AuditLog {
+  id         String   @id @default(cuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  action     String // created, updated, deleted, login, logout
+  resource   String // class, assignment, user, subscription
+  resourceId String?
+  details    Json? // changed fields, old/new values
+  ipAddress  String?
+  userAgent  String?
+  createdAt  DateTime @default(now())
+
+  @@index([userId, createdAt])
+  @@index([resource, createdAt])
+  @@index([action])
+}
+
+// ==================== EMAIL & COMMUNICATION ====================
+
+model EmailLog {
+  id      String   @id @default(cuid())
+  userId  String
+  type    String // DAILY_REMINDER, TRIAL_EXPIRY, WEEKLY_SUMMARY, etc.
+  subject String
+  sentAt  DateTime @default(now())
+  opened  Boolean  @default(false)
+  clicked Boolean  @default(false)
+  status  String   @default("SENT")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, type])
+  @@index([sentAt])
+}
+
+model Invite {
+  id         String    @id @default(cuid())
+  email      String
+  invitedBy  String
+  status     String    @default("PENDING") // PENDING, ACCEPTED, EXPIRED
+  token      String    @unique
+  expiresAt  DateTime
+  acceptedAt DateTime?
+  createdAt  DateTime  @default(now())
+
+  inviter User @relation(fields: [invitedBy], references: [id], onDelete: Cascade)
+
+  @@index([email])
+  @@index([invitedBy])
+  @@index([status])
+}
+
+// Class join invite codes (created by teachers, used by students)
+model InviteCode {
+  id         String   @id @default(cuid())
+  code       String   @unique // 8-char random alphanumeric
+  schoolId   String
+  teacherId  String
+  classId    String? // Optional: link to specific class
+  expiresAt  DateTime
+  usageLimit Int      @default(30) // Max students who can use this code
+  usedCount  Int      @default(0)
+  isActive   Boolean  @default(true)
+  createdAt  DateTime @default(now())
+
+  school  School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  teacher User   @relation("TeacherInviteCodes", fields: [teacherId], references: [id], onDelete: Cascade)
+  class   Class? @relation(fields: [classId], references: [id], onDelete: SetNull)
+
+  @@index([code])
+  @@index([schoolId])
+  @@index([teacherId])
+  @@index([expiresAt])
+}
+
+// ==================== ANALYTICS & METRICS ====================
+
+model UsageMetric {
+  id       String   @id @default(cuid())
+  schoolId String
+  date     DateTime
+  metric   String // STUDENTS_ACTIVE, GAMES_PLAYED, XP_EARNED, etc.
+  value    Int
+  metadata Json? // Additional context
+
+  school School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+
+  @@unique([schoolId, date, metric])
+  @@index([schoolId, date])
+  @@index([metric])
+}
+
+// ==================== ADAPTIVE DIFFICULTY ====================
+
+model DifficultyProgression {
+  id         String   @id @default(cuid())
+  userId     String
+  gameType   GameType
+  difficulty String   @default("MEDIUM") // EASY, MEDIUM, HARD
+
+  // Adaptive difficulty metrics
+  sessionsPlayed  Int      @default(0)
+  averageAccuracy Float    @default(0)
+  lastAdjustedAt  DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, gameType])
+  @@index([userId])
+  @@index([gameType])
+}
+
+model AnalyticsEvent {
+  id        String   @id @default(cuid())
+  event     String
+  details   Json?
+  createdAt DateTime @default(now())
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([createdAt])
+}
+
+model ApiKey {
+  id          String    @id @default(cuid())
+  key         String    @unique
+  name        String?
+  userId      String
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  permissions String[]
+  rateLimit   Int       @default(1000)
+  isActive    Boolean   @default(true)
+  lastUsedAt  DateTime?
+  expiresAt   DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  schoolId String
+  school   School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([schoolId])
+}
+
+// ==================== MULTIPLAYER & CLASSROOM ====================
+
+model MultiplayerMatch {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  gameType  String
+  mode      String // '1v1', 'team'
+
+  // Relations
+  participants MatchParticipant[]
+
+  duration     Int? // Duration in seconds
+  schoolRegion String? @default("GLOBAL") // Data residency and region-pinning marker
+  GameResult   GameResult[]
+
+  @@index([createdAt])
+  @@index([gameType])
+}
+
+model MatchParticipant {
+  id String @id @default(cuid())
+
+  // Match Relation
+  matchId String
+  match   MultiplayerMatch @relation(fields: [matchId], references: [id], onDelete: Cascade)
+
+  // Player Stats
+  name         String
+  avatar       String?
+  side         String // 'left', 'right'
+  score        Int
+  accuracy     Float
+  reactionTime Int? // Average reaction time in ms
+  bonuses      Int? // Total bonus points earned
+  isWinner     Boolean
+  teamName     String? // If in team mode
+
+  // Optional link to registered user if we want to track long-term
+  userId String?
+  user   User?   @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([matchId])
+  @@index([name])
+  @@index([isWinner, name])
+}
+
+// ==================== SYSTEM CONFIGURATION ====================
+
+model SystemSettings {
+  key         String   @id
+  value       String
+  description String?
+  updatedAt   DateTime @updatedAt
+  updatedBy   String? // User ID of the admin who changed it
+}
+
+// ==================== WEBHOOK IDEMPOTENCY + DEAD-LETTER QUEUE ====================
+//
+// WebhookEvent — idempotency table for all incoming Razorpay webhooks.
+//
+// Status flow:
+//   PROCESSING -> SUCCESS  (happy path)
+//   PROCESSING -> FAILED   (error, will retry)
+//   FAILED     -> DEAD     (retryCount >= 3, parked in DLQ, requires manual review)
+//
+// razorpayEventId is the unique Razorpay webhook event ID used as the idempotency key.
+// Re-delivery with the same ID returns 200 immediately without re-processing.
+//
+model WebhookEvent {
+  id              String    @id @default(cuid())
+  razorpayEventId String    @unique // Idempotency key from Razorpay event.id
+  eventType       String
+  status          String    @default("PROCESSING") // PROCESSING | SUCCESS | FAILED | DEAD
+  retryCount      Int       @default(0)
+  payload         Json
+  error           String?   @db.Text // Last error message
+  processedAt     DateTime?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  @@index([status])
+  @@index([createdAt])
+}
+
+// ==================== AI MICRO-SKILL KNOWLEDGE GRAPH ====================
+
+model SkillNode {
+  id          String   @id @default(cuid())
+  code        String   @unique // e.g., "MATH.ADD.1DIGIT"
+  name        String
+  description String?
+  subject     Subject
+  grade       String
+
+  // Self-referential for prerequisites
+  prerequisiteFor SkillNode[] @relation("Prerequisites")
+  prerequisites   SkillNode[] @relation("Prerequisites")
+
+  masteryRecords UserSkillMastery[]
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model UserSkillMastery {
+  id          String   @id @default(cuid())
+  userId      String
+  skillId     String
+
+  // Bayesian Knowledge Tracing parameters
+  masteryProbability Float @default(0.1) // P(L): Probability student has learned the skill
+  slipProbability    Float @default(0.1) // P(S): Probability of mistake despite knowing
+  guessProbability   Float @default(0.2) // P(G): Probability of guessing correctly without knowing
+  transitProbability Float @default(0.1) // P(T): Probability of learning after a practice opportunity
+
+  consecutiveCorrect Int @default(0)
+  totalAttempts      Int @default(0)
+
+  lastPracticedAt DateTime @default(now())
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  user  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  skill SkillNode @relation(fields: [skillId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, skillId])
+  @@index([userId])
+  @@index([skillId])
+  @@index([userId, lastPracticedAt]) // For BKT decay cron batch queries
+}
+
+// ==================== ENTERPRISE GROWTH ENGINE ====================
+
+model ReferralLink {
+  id          String   @id @default(cuid())
+  code        String   @unique
+  userId      String   @unique // Each user gets one active referral link
+  clicks      Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  rewards     ReferralReward[]
+
+  @@index([userId])
+}
+
+model ReferralReward {
+  id          String   @id @default(cuid())
+  referralId  String
+  referredId  String   @unique // The new user who signed up
+  status      RewardStatus @default(PENDING) // PENDING, PAID_OUT
+  rewardType  String   @default("SUBSCRIPTION_MONTH") // Type of reward given
+  amount      Int      @default(1) // Amount of the reward type (e.g. 1 month)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  referral    ReferralLink @relation(fields: [referralId], references: [id], onDelete: Cascade)
+  referred    User         @relation("ReferredUser", fields: [referredId], references: [id], onDelete: Cascade)
+
+  @@index([referralId])
+}
+
+
+enum RewardStatus {
+  PENDING
+  PAID_OUT
+  CANCELLED
+}
+
+
+// ==================== GAME QUESTION DATABASE ====================
+
+model GameQuestion {
+  id                String    @id @default(cuid())
+  gameKey           String
+  gradeBand         String
+  subjectTag        String
+  skillTag          String
+  difficultyTier    Int       @default(2)
+  questionText      String
+  answerOptions     Json?
+  correctAnswer     String
+  explanation       String    @default("")
+  timeLimit         Int       @default(15)
+  distractorLogic   String?
+  standardAlignment String?
+  languageLevel     String    @default("en")
+  isGenerative      Boolean   @default(false)
+  seedParams        Json?
+  answerFormula     String?
+  validatedAt       DateTime?
+  validationErrors  String?
+  isActive          Boolean   @default(true)
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+
+  @@index([gameKey, gradeBand, difficultyTier])
+  @@index([gameKey, isActive])
+  @@index([subjectTag, gradeBand])
+}
+
+model QuestionHealthLog {
+  id             String   @id @default(cuid())
+  gameKey        String
+  sampleSize     Int
+  failures       Int      @default(0)
+  failureDetails Json?
+  generatorRuns  Int      @default(0)
+  generatorFails Int      @default(0)
+  passRate       Float
+  alertSent      Boolean  @default(false)
+  runAt          DateTime @default(now())
+
+  @@index([gameKey, runAt])
+  @@index([runAt])
+}

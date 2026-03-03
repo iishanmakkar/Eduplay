@@ -1,0 +1,64 @@
+model Subscription {
+  id                     String             @id @default(cuid())
+  schoolId               String             @unique
+  school                 School             @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  plan                   SubscriptionPlan   @default(STARTER)
+  status                 SubscriptionStatus @default(TRIALING)
+  trialEndsAt            DateTime?
+  currentPeriodStart     DateTime?
+  currentPeriodEnd       DateTime?
+  cancelAtPeriodEnd      Boolean            @default(false)
+  cancelledAt            DateTime?
+  razorpaySubscriptionId String?            @unique
+  razorpayCustomerId     String?
+  createdAt              DateTime           @default(now())
+  updatedAt              DateTime           @updatedAt
+
+  // Per-seat pricing fields (Phase 3 — Enterprise billing)
+  // pricePerStudent: per-student-per-month in smallest currency unit (paise for INR, cents for USD)
+  // maxStudents: seat cap — null means unlimited (district tier only)
+  // billedStudentCount: snapshot of active students at last billing cycle calculation
+  pricePerStudent        Int?               // e.g. 5000 = ₹50/student/month
+  maxStudents            Int?               // null = unlimited
+  billedStudentCount     Int                @default(0)
+
+  // Relations
+  transactions Transaction[]
+
+  @@index([schoolId])
+  @@index([status])
+}
+
+model Transaction {
+  id                String       @id @default(cuid())
+  subscriptionId    String
+  subscription      Subscription @relation(fields: [subscriptionId], references: [id], onDelete: Cascade)
+  razorpayPaymentId String       @unique
+  razorpayOrderId   String?
+  amount            Int          // Amount in paise (₹1 = 100 paise)
+  currency          String       @default("INR")
+  status            String       // success, failed, pending
+  plan              String
+  description       String?
+  createdAt         DateTime     @default(now())
+
+  @@index([subscriptionId])
+  @@index([status])
+  @@index([createdAt])
+}
+
+model EmailLog {
+  id        String    @id @default(cuid())
+  userId    String
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type      String    // welcome, trial_reminder, streak_reminder, etc.
+  status    String    // sent, failed, bounced
+  sentAt    DateTime  @default(now())
+  openedAt  DateTime?
+  clickedAt DateTime?
+  error     String?
+
+  @@index([userId])
+  @@index([type])
+  @@index([sentAt])
+}

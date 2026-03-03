@@ -1,0 +1,16 @@
+{
+    "Settings": {
+        "title": "Settings",
+        "language": "Language",
+        "languageDescription": "Choose your preferred language for the interface.",
+        "save": "Save Changes"
+    },
+    "Dashboard": {
+        "welcome": "Welcome back"
+    },
+    "TrialBanner": {
+        "endsIn": "Your Free Trial ends in {daysLeft} days.",
+        "urgentWarning": " Don't lose access to premium features!",
+        "upgradeNow": "Upgrade Now"
+    }
+}

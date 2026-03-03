@@ -1,0 +1,34 @@
+﻿Environment variables loaded from .env
+Prisma schema loaded from prisma\schema.prisma
+node.exe : Error: 
+At line:1 char:1
++ & "C:\Program Files\
+nodejs/node.exe" 
+"C:\Program 
+Files\nodejs/node_mo 
+...
++ ~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~
+~~~~~
+    + CategoryInfo    
+          : NotSpeci  
+  fied: (Error: :St   
+ ring) [], RemoteE    
+xception
+    + FullyQualifiedE 
+   rrorId : NativeCo  
+  mmandError
+ 
+EPERM: operation not 
+permitted, rename 'D:\
+school\eduplay-saas\no
+de_modules\.prisma\cli
+ent\query_engine-windo
+ws.dll.node.tmp6020' 
+-> 'D:\school\eduplay-
+saas\node_modules\.pri
+sma\client\query_engin
+e-windows.dll.node'
+
+

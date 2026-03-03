@@ -1,0 +1,49 @@
+{
+    "buildCommand": "npx prisma generate && npm run build",
+    "crons": [
+        {
+            "path": "/api/internal/cron/data-retention",
+            "schedule": "0 2 * * *"
+        }
+    ],
+    "headers": [
+        {
+            "source": "/(.*)",
+            "headers": [
+                {
+                    "key": "Strict-Transport-Security",
+                    "value": "max-age=31536000; includeSubDomains; preload"
+                },
+                {
+                    "key": "X-Frame-Options",
+                    "value": "DENY"
+                },
+                {
+                    "key": "X-Content-Type-Options",
+                    "value": "nosniff"
+                },
+                {
+                    "key": "X-DNS-Prefetch-Control",
+                    "value": "on"
+                }
+            ]
+        }
+    ],
+    "functions": {
+        "app/api/ai-games/generate/route.ts": {
+            "memory": 1024,
+            "maxDuration": 60
+        },
+        "app/api/ai-games/evaluate-essay/route.ts": {
+            "memory": 1024,
+            "maxDuration": 60
+        },
+        "app/api/admin/metrics/route.ts": {
+            "memory": 512,
+            "maxDuration": 15
+        }
+    },
+    "regions": [
+        "iad1"
+    ]
+}

@@ -1,0 +1,153 @@
+﻿node.exe : FAIL __tests__/
+validation/game-engine-aud
+it.test.ts
+At line:1 char:1
++ & "C:\Program 
+Files\nodejs/node.exe" 
+"C:\Program 
+Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo        
+      : NotSpecified: (F  
+  AIL __tests__/...e-au   
+ dit.test.ts:String) [    
+], RemoteException
+    + FullyQualifiedError 
+   Id : NativeCommandErr  
+  or
+ 
+  MathEngine ΓÇö 
+10,000-run integrity 
+simulation
+    ΓêÜ produces zero NaN 
+/ Infinity / undefined 
+answers (53 ms)
+    ΓêÜ never produces 
+multi-correct option sets 
+(59 ms)
+    ΓêÜ never produces 
+duplicate options (91 ms)
+    ΓêÜ always includes 
+the correct answer in the 
+options (86 ms)
+  Division safety ΓÇö 
+5,000 forced-├╖ runs
+    ΓêÜ never produces 
+NaN or Infinity for 
+division problems (46 ms)
+    ΓêÜ always produces 
+integer results for 
+division (no remainder) 
+(8 ms)
+  MathEngine.generateOptio
+ns ΓÇö correctness 
+guarantees
+    ΓêÜ always returns 
+exactly 4 options (90 ms)
+    ΓêÜ never returns NaN 
+or Infinity in options 
+(489 ms)
+    ΓêÜ always includes 
+the correct answer in 
+options (68 ms)
+    ΓêÜ handles NaN input 
+gracefully (returns safe 
+fallback) (1 ms)
+    ΓêÜ handles 
+negative-zero gracefully 
+(1 ms)
+  MathEngine edge cases 
+ΓÇö zero, negatives, 
+large numbers
+    ΓêÜ handles a - a = 0 
+without producing -0 (1 
+ms)
+    ΓêÜ handles division 
+by zero safely ΓåÆ 
+returns 0
+    ΓêÜ BEGINNER 
+difficulty never produces 
+negative answers (5 ms)
+    ├ù CHALLENGE 
+difficulty produces 
+answers in a reasonable 
+range (8 ms)
+  validateAnswerOptions 
+ΓÇö option set integrity
+    ΓêÜ passes for a 
+valid option set
+    ΓêÜ fails when 
+correct answer is missing 
+from options
+    ΓêÜ fails on 
+duplicate options (1 ms)
+    ΓêÜ fails with only 1 
+option
+
+  ΓùÅ MathEngine edge 
+cases ΓÇö zero, 
+negatives, large numbers 
+ΓÇ║ CHALLENGE difficulty 
+produces answers in a 
+reasonable range
+
+    expect(received).toHav
+eLength(expected)
+
+    Expected length: 0
+    Received length: 9
+    Received array:  
+["Answer out of bounds: 
+93 ├ù 158 = 14694", 
+"Answer out of bounds: 
+167 ├ù (-113) = -18871", 
+"Answer out of bounds: 
+176 ├ù 136 = 23936", 
+"Answer out of bounds: 
+-180 ├ù 188 = -33840", 
+"Answer out of bounds: 
+119 ├ù 186 = 22134", 
+"Answer out of bounds: 
+151 ├ù 107 = 16157", 
+"Answer out of bounds: 88 
+├ù 154 = 13552", "Answer 
+out of bounds: 159 ├ù 174 
+= 27666", "Answer out of 
+bounds: 185 ├ù 197 = 
+36445"]
+
+    [0m [90m 146 |[39m 
+            }
+     [90m 147 |[39m     
+    }
+    
+[31m[1m>[22m[39m[90m 
+148 |[39m         expect(
+errors)[33m.[39mtoHaveLe
+ngth([35m0[39m)
+     [90m     |[39m     
+                   
+[31m[1m^[22m[39m
+     [90m 149 |[39m     
+})
+     [90m 150 |[39m })
+     [90m 151 |[39m[0m
+
+      at 
+Object.toHaveLength (__tes
+ts__/validation/game-engin
+e-audit.test.ts:148:24)
+
+Test Suites: 1 failed, 1 
+total
+Tests:       1 failed, 18 
+passed, 19 total
+Snapshots:   0 total
+Time:        2.503 s, 
+estimated 3 s
+Ran all test suites 
+matching __tests__/validat
+ion/game-engine-audit.test
+.ts.

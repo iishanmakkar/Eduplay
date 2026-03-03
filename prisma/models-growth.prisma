@@ -1,0 +1,55 @@
+// Growth & Retention Models
+
+model DailyChallenge {
+  id          String   @id @default(cuid())
+  date        DateTime @unique // One challenge per day
+  title       String
+  description String
+  gameType    String   // 'math_quiz', 'word_scramble', etc.
+  targetScore Int
+  xpReward    Int      @default(500)
+  createdAt   DateTime @default(now())
+
+  completions ChallengeCompletion[]
+  
+  @@index([date])
+}
+
+model ChallengeCompletion {
+  id          String        @id @default(cuid())
+  userId      String
+  user        User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  challengeId String
+  challenge   DailyChallenge @relation(fields: [challengeId], references: [id], onDelete: Cascade)
+  completedAt DateTime      @default(now())
+  score       Int           // Score achieved
+  
+  @@unique([userId, challengeId]) // User can only complete once
+  @@index([userId])
+  @@index([challengeId])
+}
+
+model Achievement {
+  id          String   @id @default(cuid())
+  code        String   @unique // e.g. 'first_win', 'score_1000'
+  title       String
+  description String
+  icon        String   // Emoji or icon name
+  category    String   // 'gameplay', 'streak', 'social'
+  xpReward    Int
+  condition   Json     // Logic for unlocking: { type: 'count', metric: 'games_played', value: 10 }
+  
+  users       UserAchievement[]
+}
+
+model UserAchievement {
+  id            String      @id @default(cuid())
+  userId        String
+  user          User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  achievementId String
+  achievement   Achievement @relation(fields: [achievementId], references: [id], onDelete: Cascade)
+  unlockedAt    DateTime    @default(now())
+  
+  @@unique([userId, achievementId])
+  @@index([userId])
+}

@@ -1,0 +1,71 @@
+name: Production Verification Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  verify:
+    name: Build & Verify
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Prisma Generate
+        run: npx prisma generate
+
+      - name: Strict TypeScript Verification
+        run: npx tsc --noEmit
+
+      - name: Security Audit
+        run: npm audit --omit=dev --audit-level=high || true
+        # Allow audit to warn but not strictly block if we have 0-day upstream deps we can't patch
+
+      - name: Linting
+        run: npm run lint
+
+      - name: Run Tests
+        run: npm run test
+
+      - name: Build Application
+        run: npm run build
+        env:
+          NEXT_TELEMETRY_DISABLED: 1
+          # Dummy envs to pass Next build-time evaluations
+          DATABASE_URL: "postgresql://dummy"
+          REDIS_URL: "redis://dummy"
+          NEXTAUTH_SECRET: "dummy_secret_for_build"
+          OPENROUTER_API_KEY: "dummy"
+
+  deploy:
+    name: Vercel Production Deploy
+    needs: verify
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Deploy to Vercel
+        uses: amondnet/vercel-action@v20
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          vercel-args: '--prod'

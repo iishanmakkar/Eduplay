@@ -1,0 +1,354 @@
+/**
+ * Touch Optimization Styles
+ * Large tap targets and touch-friendly interactions
+ */
+
+/* Minimum Tap Target Size - 60px */
+.touch-target {
+    min-width: 60px;
+    min-height: 60px;
+    position: relative;
+}
+
+/* Ensure all interactive elements meet minimum */
+button,
+a,
+input[type="button"],
+input[type="submit"],
+.clickable {
+    min-width: 60px;
+    min-height: 60px;
+    padding: 12px 20px;
+}
+
+/* Touch Ripple Effect */
+.touch-button {
+    position: relative;
+    overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.touch-button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.touch-button:active::after {
+    width: 300px;
+    height: 300px;
+}
+
+/* Haptic-like Feedback */
+.touch-feedback {
+    transition: transform 0.1s ease-out;
+}
+
+.touch-feedback:active {
+    transform: scale(0.95);
+}
+
+/* Prevent Accidental Double-Tap */
+.no-double-tap {
+    touch-action: manipulation;
+    -ms-touch-action: manipulation;
+}
+
+/* Large Swipe Areas */
+.swipe-area {
+    min-height: 100px;
+    padding: 20px;
+    cursor: grab;
+}
+
+.swipe-area:active {
+    cursor: grabbing;
+}
+
+/* Touch-Friendly Input Fields */
+input[type="text"],
+input[type="number"],
+input[type="email"],
+textarea {
+    min-height: 60px;
+    font-size: 18px;
+    padding: 16px;
+    border-radius: 12px;
+    border: 2px solid #E5E7EB;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+    border-color: #3B82F6;
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+
+/* Touch-Friendly Checkboxes and Radio Buttons */
+input[type="checkbox"],
+input[type="radio"] {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+}
+
+/* Touch-Friendly Select Dropdowns */
+select {
+    min-height: 60px;
+    font-size: 18px;
+    padding: 16px;
+    border-radius: 12px;
+    border: 2px solid #E5E7EB;
+    background-color: white;
+    cursor: pointer;
+}
+
+/* Drag and Drop - Smooth on Touch */
+.draggable {
+    touch-action: none;
+    user-select: none;
+    cursor: move;
+}
+
+.draggable:active {
+    opacity: 0.8;
+    transform: scale(1.05);
+}
+
+.drop-zone {
+    min-height: 100px;
+    border: 3px dashed #D1D5DB;
+    border-radius: 16px;
+    padding: 24px;
+    transition: all 0.3s ease;
+}
+
+.drop-zone.drag-over {
+    border-color: #3B82F6;
+    background-color: rgba(59, 130, 246, 0.05);
+}
+
+/* Swipeable Cards */
+.swipeable-card {
+    touch-action: pan-y;
+    transition: transform 0.3s ease-out;
+}
+
+.swipeable-card.swiping {
+    transition: none;
+}
+
+/* Touch-Friendly Sliders */
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 12px;
+    border-radius: 6px;
+    background: #E5E7EB;
+    outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #3B82F6;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #3B82F6;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    border: none;
+}
+
+/* Touch-Friendly Tabs */
+.tab-button {
+    min-height: 60px;
+    min-width: 100px;
+    padding: 16px 24px;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 12px 12px 0 0;
+    transition: all 0.2s ease;
+}
+
+.tab-button:active {
+    transform: translateY(2px);
+}
+
+/* Touch-Friendly Modal Close Buttons */
+.modal-close {
+    min-width: 60px;
+    min-height: 60px;
+    font-size: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Prevent Text Selection on Touch */
+.no-select {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Touch-Friendly Pagination */
+.pagination-button {
+    min-width: 60px;
+    min-height: 60px;
+    font-size: 20px;
+    font-weight: 700;
+    border-radius: 12px;
+    margin: 0 8px;
+}
+
+/* Touch-Friendly Color Picker */
+.color-option {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 4px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.color-option:active {
+    transform: scale(0.9);
+}
+
+.color-option.selected {
+    border-color: #1F2937;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.3);
+}
+
+/* Touch-Friendly Avatar Selector */
+.avatar-option {
+    width: 80px;
+    height: 80px;
+    font-size: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 4px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.avatar-option:active {
+    transform: scale(0.9);
+}
+
+.avatar-option.selected {
+    border-color: #3B82F6;
+    background-color: rgba(59, 130, 246, 0.1);
+}
+
+/* Touch-Friendly Answer Buttons */
+.answer-button {
+    min-height: 80px;
+    padding: 20px;
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 16px;
+    border: 3px solid #E5E7EB;
+    transition: all 0.2s ease;
+}
+
+.answer-button:active {
+    transform: scale(0.98);
+}
+
+.answer-button:hover {
+    border-color: #3B82F6;
+    background-color: rgba(59, 130, 246, 0.05);
+}
+
+/* Smooth Scrolling on Touch */
+.touch-scroll {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+}
+
+/* Hide Scrollbars on Touch Devices */
+.touch-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.touch-scroll {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Touch-Friendly Tooltips - Larger */
+.touch-tooltip {
+    font-size: 18px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    min-width: 120px;
+}
+
+/* Accessibility - Focus Visible for Keyboard Users */
+*:focus-visible {
+    outline: 4px solid #3B82F6;
+    outline-offset: 2px;
+}
+
+/* Remove Outline for Touch Users */
+*:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* Touch-Optimized Grid Layouts */
+.touch-grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+}
+
+@media (max-width: 768px) {
+    .touch-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 12px;
+    }
+}
+
+/* Large Touch Targets for Mobile */
+@media (max-width: 768px) {
+
+    button,
+    a,
+    .clickable {
+        min-height: 48px;
+        padding: 12px 16px;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    select {
+        min-height: 48px;
+        font-size: 16px;
+        /* Prevents zoom on iOS */
+    }
+}

@@ -1,0 +1,86 @@
+﻿node.exe : PASS __test
+s__/validation/bkt-cla
+mp.test.ts
+At line:1 char:1
++ & "C:\Program Files\
+nodejs/node.exe" 
+"C:\Program 
+Files\nodejs/node_mo 
+...
++ ~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~
+~~~~~
+    + CategoryInfo    
+          : NotSpeci  
+  fied: (PASS __tes   
+ ts__/...t-clamp.t    
+est.ts:String) []    
+, RemoteException
+    + FullyQualifiedE 
+   rrorId : NativeCo  
+  mmandError
+ 
+  BKT Crash Guard ΓÇö 
+Probability Bounds
+    ΓêÜ P(L) must 
+never reach 1.0 after 
+100 consecutive 
+CORRECT answers (23 
+ms)
+    ΓêÜ P(L) must 
+never reach 0.0 after 
+100 consecutive 
+INCORRECT answers (25 
+ms)
+    ΓêÜ denominator 
+is never zero for any 
+valid P(L) in [MIN, 
+MAX] (2 ms)
+    ΓêÜ isMastered() 
+returns true only 
+when mastery is at 
+threshold (4 ms)
+  BKT Forgetting Curve
+    ΓêÜ should not 
+decay when 
+daysInactive = 0 (2 
+ms)
+    ΓêÜ should decay 
+after 30 days of 
+inactivity
+    ΓêÜ should decay 
+after 69 days 
+(approximate 
+half-life) (1 ms)
+    ΓêÜ should never 
+decay below 
+BKT_BOUNDS.MIN 
+regardless of 
+inactive days
+    ΓêÜ should not 
+apply decay for 
+negative daysInactive 
+(1 ms)
+  clampProbability 
+utility
+    ΓêÜ clamps 
+above-MAX values to 
+MAX
+    ΓêÜ clamps 
+below-MIN values to 
+MIN (1 ms)
+    ΓêÜ passes 
+through valid 
+probabilities 
+unchanged
+
+Test Suites: 1 
+passed, 1 total
+Tests:       12 
+passed, 12 total
+Snapshots:   0 total
+Time:        1.942 s, 
+estimated 2 s
+Ran all test suites 
+matching bkt-clamp.

@@ -1,0 +1,5 @@
+﻿app/api/cron/content-health-check/route.ts(69,38): error TS2339: Property 'gameQuestion' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.
+app/api/cron/content-health-check/route.ts(82,59): error TS7006: Parameter 'q' implicitly has an 'any' type.
+app/api/cron/content-health-check/route.ts(191,26): error TS2339: Property 'questionHealthLog' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.
+app/api/cron/content-health-check/route.ts(214,22): error TS2339: Property 'questionHealthLog' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.
+app/api/games/submit/answer/route.ts(70,38): error TS2339: Property 'gameQuestion' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.

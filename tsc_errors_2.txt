@@ -1,0 +1,336 @@
+app/api/admin/bulk-import/students/route.ts(66,22): error TS18046: 'record' is of type 'unknown'.
+app/api/admin/bulk-import/students/route.ts(66,39): error TS18046: 'record' is of type 'unknown'.
+app/api/admin/bulk-import/students/route.ts(78,37): error TS18046: 'record' is of type 'unknown'.
+app/api/admin/bulk-import/students/route.ts(85,36): error TS18046: 'record' is of type 'unknown'.
+app/api/admin/bulk-import/students/route.ts(86,29): error TS2353: Object literal may only specify known properties, and 'name' does not exist in type '(Without<UserCreateInput, UserUncheckedCreateInput> & UserUncheckedCreateInput) | (Without<...> & UserCreateInput)'.
+app/api/admin/bulk-import/students/route.ts(86,35): error TS18046: 'record' is of type 'unknown'.
+app/api/analytics/conversion/route.ts(22,43): error TS2339: Property 'analyticsEvent' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.
+app/api/analytics/conversion/route.ts(37,44): error TS2339: Property 'analyticsEvent' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.
+app/api/analytics/dau-wau/route.ts(22,40): error TS2339: Property 'analyticsEvent' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.
+app/api/analytics/dau-wau/route.ts(41,37): error TS2339: Property 'analyticsEvent' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.
+app/api/analytics/dau-wau/route.ts(57,25): error TS7006: Parameter 'event' implicitly has an 'any' type.
+app/api/analytics/dau-wau/route.ts(79,25): error TS7006: Parameter 'event' implicitly has an 'any' type.
+app/api/analytics/revenue/route.ts(22,43): error TS2551: Property 'transaction' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'. Did you mean '$transaction'?
+app/api/analytics/revenue/route.ts(45,31): error TS7006: Parameter 'transaction' implicitly has an 'any' type.
+app/api/analytics/revenue/route.ts(67,17): error TS2353: Object literal may only specify known properties, and 'transactions' does not exist in type 'SubscriptionInclude<DefaultArgs>'.
+app/api/analytics/revenue/route.ts(81,21): error TS2339: Property 'transactions' does not exist on type '{ status: SubscriptionStatus; id: string; createdAt: Date; schoolId: string; updatedAt: Date; plan: SubscriptionPlan; stripeCustomerId: string | null; stripeSubscriptionId: string | null; currentPeriodEnd: Date | null; cancelAtPeriodEnd: boolean; trialStartedAt: Date | null; }'.
+app/api/analytics/revenue/route.ts(82,41): error TS2339: Property 'transactions' does not exist on type '{ status: SubscriptionStatus; id: string; createdAt: Date; schoolId: string; updatedAt: Date; plan: SubscriptionPlan; stripeCustomerId: string | null; stripeSubscriptionId: string | null; currentPeriodEnd: Date | null; cancelAtPeriodEnd: boolean; trialStartedAt: Date | null; }'.
+app/api/cron/aggregate-daily-metrics/route.ts(23,47): error TS2339: Property 'analyticsEvent' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.
+app/api/cron/aggregate-daily-metrics/route.ts(41,41): error TS2339: Property 'analyticsEvent' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.
+app/api/cron/aggregate-daily-metrics/route.ts(52,42): error TS2339: Property 'analyticsEvent' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.
+app/api/cron/aggregate-daily-metrics/route.ts(63,43): error TS2551: Property 'transaction' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'. Did you mean '$transaction'?
+app/api/cron/aggregate-daily-metrics/route.ts(72,46): error TS7006: Parameter 'sum' implicitly has an 'any' type.
+app/api/cron/aggregate-daily-metrics/route.ts(72,51): error TS7006: Parameter 't' implicitly has an 'any' type.
+app/api/cron/aggregate-daily-metrics/route.ts(75,47): error TS2339: Property 'analyticsEvent' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.
+app/api/cron/aggregate-daily-metrics/route.ts(88,17): error TS2353: Object literal may only specify known properties, and 'cancelledAt' does not exist in type 'SubscriptionWhereInput'.
+app/api/cron/aggregate-daily-metrics/route.ts(102,22): error TS2339: Property 'dailyMetrics' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.
+app/api/cron/check-trial-expirations/route.ts(23,17): error TS2353: Object literal may only specify known properties, and 'trialEndsAt' does not exist in type 'SubscriptionWhereInput'.
+app/api/cron/check-trial-expirations/route.ts(47,21): error TS2353: Object literal may only specify known properties, and 'cancelledAt' does not exist in type '(Without<SubscriptionUpdateInput, SubscriptionUncheckedUpdateInput> & SubscriptionUncheckedUpdateInput) | (Without<...> & SubscriptionUpdateInput)'.
+app/api/cron/check-trial-expirations/route.ts(54,40): error TS2551: Property 'school' does not exist on type '{ status: SubscriptionStatus; id: string; createdAt: Date; schoolId: string; updatedAt: Date; plan: SubscriptionPlan; stripeCustomerId: string | null; stripeSubscriptionId: string | null; currentPeriodEnd: Date | null; cancelAtPeriodEnd: boolean; trialStartedAt: Date | null; }'. Did you mean 'schoolId'?
+app/api/cron/check-trial-expirations/route.ts(70,29): error TS2353: Object literal may only specify known properties, and 'status' does not exist in type '(Without<EmailLogCreateInput, EmailLogUncheckedCreateInput> & EmailLogUncheckedCreateInput) | (Without<...> & EmailLogCreateInput)'.
+app/api/cron/check-trial-expirations/route.ts(80,29): error TS2353: Object literal may only specify known properties, and 'status' does not exist in type '(Without<EmailLogCreateInput, EmailLogUncheckedCreateInput> & EmailLogUncheckedCreateInput) | (Without<...> & EmailLogCreateInput)'.
+app/api/cron/send-assignment-reminders/route.ts(31,25): error TS2353: Object literal may only specify known properties, and 'enrollments' does not exist in type 'ClassInclude<DefaultArgs>'.
+app/api/cron/send-assignment-reminders/route.ts(46,52): error TS2339: Property 'gameResults' does not exist on type '{ id: string; createdAt: Date; updatedAt: Date; classId: string; teacherId: string; gameType: GameType; title: string; description: string | null; dueDate: Date; }'.
+app/api/cron/send-assignment-reminders/route.ts(46,68): error TS7006: Parameter 'r' implicitly has an 'any' type.
+app/api/cron/send-assignment-reminders/route.ts(48,49): error TS2551: Property 'class' does not exist on type '{ id: string; createdAt: Date; updatedAt: Date; classId: string; teacherId: string; gameType: GameType; title: string; description: string | null; dueDate: Date; }'. Did you mean 'classId'?
+app/api/cron/send-assignment-reminders/route.ts(75,29): error TS2353: Object literal may only specify known properties, and 'status' does not exist in type '(Without<EmailLogCreateInput, EmailLogUncheckedCreateInput> & EmailLogUncheckedCreateInput) | (Without<...> & EmailLogCreateInput)'.
+app/api/cron/send-assignment-reminders/route.ts(85,29): error TS2353: Object literal may only specify known properties, and 'status' does not exist in type '(Without<EmailLogCreateInput, EmailLogUncheckedCreateInput> & EmailLogUncheckedCreateInput) | (Without<...> & EmailLogCreateInput)'.
+app/api/cron/send-streak-reminders/route.ts(60,25): error TS2353: Object literal may only specify known properties, and 'status' does not exist in type 'Without<EmailLogCreateInput, EmailLogUncheckedCreateInput> & EmailLogUncheckedCreateInput'.
+app/api/cron/send-streak-reminders/route.ts(70,25): error TS2353: Object literal may only specify known properties, and 'status' does not exist in type 'Without<EmailLogCreateInput, EmailLogUncheckedCreateInput> & EmailLogUncheckedCreateInput'.
+app/api/cron/send-trial-reminders/route.ts(27,17): error TS2353: Object literal may only specify known properties, and 'trialEndsAt' does not exist in type 'SubscriptionWhereInput'.
+app/api/cron/send-trial-reminders/route.ts(46,40): error TS2551: Property 'school' does not exist on type '{ status: SubscriptionStatus; id: string; createdAt: Date; schoolId: string; updatedAt: Date; plan: SubscriptionPlan; stripeCustomerId: string | null; stripeSubscriptionId: string | null; currentPeriodEnd: Date | null; cancelAtPeriodEnd: boolean; trialStartedAt: Date | null; }'. Did you mean 'schoolId'?
+app/api/cron/send-trial-reminders/route.ts(47,41): error TS2339: Property 'trialEndsAt' does not exist on type '{ status: SubscriptionStatus; id: string; createdAt: Date; schoolId: string; updatedAt: Date; plan: SubscriptionPlan; stripeCustomerId: string | null; stripeSubscriptionId: string | null; currentPeriodEnd: Date | null; cancelAtPeriodEnd: boolean; trialStartedAt: Date | null; }'.
+app/api/cron/send-trial-reminders/route.ts(50,31): error TS2339: Property 'trialEndsAt' does not exist on type '{ status: SubscriptionStatus; id: string; createdAt: Date; schoolId: string; updatedAt: Date; plan: SubscriptionPlan; stripeCustomerId: string | null; stripeSubscriptionId: string | null; currentPeriodEnd: Date | null; cancelAtPeriodEnd: boolean; trialStartedAt: Date | null; }'.
+app/api/cron/send-trial-reminders/route.ts(59,38): error TS2551: Property 'school' does not exist on type '{ status: SubscriptionStatus; id: string; createdAt: Date; schoolId: string; updatedAt: Date; plan: SubscriptionPlan; stripeCustomerId: string | null; stripeSubscriptionId: string | null; currentPeriodEnd: Date | null; cancelAtPeriodEnd: boolean; trialStartedAt: Date | null; }'. Did you mean 'schoolId'?
+app/api/cron/send-trial-reminders/route.ts(70,29): error TS2353: Object literal may only specify known properties, and 'status' does not exist in type '(Without<EmailLogCreateInput, EmailLogUncheckedCreateInput> & EmailLogUncheckedCreateInput) | (Without<...> & EmailLogCreateInput)'.
+app/api/cron/send-trial-reminders/route.ts(80,29): error TS2353: Object literal may only specify known properties, and 'status' does not exist in type '(Without<EmailLogCreateInput, EmailLogUncheckedCreateInput> & EmailLogUncheckedCreateInput) | (Without<...> & EmailLogCreateInput)'.
+app/api/games/save-result/route.ts(99,21): error TS2353: Object literal may only specify known properties, and 'xp' does not exist in type '(Without<UserUpdateInput, UserUncheckedUpdateInput> & UserUncheckedUpdateInput) | (Without<...> & UserUpdateInput)'.
+app/api/settings/api-keys/route.ts(19,38): error TS2339: Property 'apiKey' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.
+app/api/settings/api-keys/route.ts(105,37): error TS2339: Property 'apiKey' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.
+app/api/settings/api-keys/route.ts(117,22): error TS2339: Property 'apiKey' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.
+app/api/subscriptions/cancel/route.ts(38,21): error TS2353: Object literal may only specify known properties, and 'cancelledAt' does not exist in type '(Without<SubscriptionUpdateInput, SubscriptionUncheckedUpdateInput> & SubscriptionUncheckedUpdateInput) | (Without<...> & SubscriptionUpdateInput)'.
+app/api/subscriptions/cancel/route.ts(44,30): error TS2339: Property 'razorpaySubscriptionId' does not exist on type '{ status: SubscriptionStatus; id: string; createdAt: Date; schoolId: string; updatedAt: Date; plan: SubscriptionPlan; stripeCustomerId: string | null; stripeSubscriptionId: string | null; currentPeriodEnd: Date | null; cancelAtPeriodEnd: boolean; trialStartedAt: Date | null; }'.
+app/api/subscriptions/cancel/route.ts(52,70): error TS2339: Property 'razorpaySubscriptionId' does not exist on type '{ status: SubscriptionStatus; id: string; createdAt: Date; schoolId: string; updatedAt: Date; plan: SubscriptionPlan; stripeCustomerId: string | null; stripeSubscriptionId: string | null; currentPeriodEnd: Date | null; cancelAtPeriodEnd: boolean; trialStartedAt: Date | null; }'.
+app/api/subscriptions/history/route.ts(22,33): error TS2353: Object literal may only specify known properties, and 'transactions' does not exist in type 'SubscriptionInclude<DefaultArgs>'.
+app/api/subscriptions/history/route.ts(33,20): error TS2551: Property 'school' does not exist on type '{ id: string; createdAt: Date; email: string; password: string; role: UserRole; schoolId: string; firstName: string; lastName: string; avatar: string | null; updatedAt: Date; }'. Did you mean 'schoolId'?
+app/api/subscriptions/history/route.ts(38,32): error TS2551: Property 'school' does not exist on type '{ id: string; createdAt: Date; email: string; password: string; role: UserRole; schoolId: string; firstName: string; lastName: string; avatar: string | null; updatedAt: Date; }'. Did you mean 'schoolId'?
+app/api/subscriptions/verify/route.ts(71,17): error TS2353: Object literal may only specify known properties, and 'currentPeriodStart' does not exist in type 'Without<SubscriptionCreateInput, SubscriptionUncheckedCreateInput> & SubscriptionUncheckedCreateInput'.
+app/api/subscriptions/verify/route.ts(78,17): error TS2353: Object literal may only specify known properties, and 'currentPeriodStart' does not exist in type '(Without<SubscriptionUpdateInput, SubscriptionUncheckedUpdateInput> & SubscriptionUncheckedUpdateInput) | (Without<...> & SubscriptionUpdateInput)'.
+app/api/subscriptions/verify/route.ts(87,22): error TS2551: Property 'transaction' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'. Did you mean '$transaction'?
+app/api/subscriptions/webhook/route.ts(81,18): error TS2551: Property 'transaction' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'. Did you mean '$transaction'?
+app/api/subscriptions/webhook/route.ts(93,18): error TS2551: Property 'transaction' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'. Did you mean '$transaction'?
+app/api/subscriptions/webhook/route.ts(102,38): error TS2551: Property 'transaction' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'. Did you mean '$transaction'?
+app/api/subscriptions/webhook/route.ts(114,66): error TS7006: Parameter 'u' implicitly has an 'any' type.
+app/api/subscriptions/webhook/route.ts(126,18): error TS2353: Object literal may only specify known properties, and 'razorpaySubscriptionId' does not exist in type 'SubscriptionWhereInput'.
+app/api/subscriptions/webhook/route.ts(134,17): error TS2353: Object literal may only specify known properties, and 'currentPeriodStart' does not exist in type '(Without<SubscriptionUpdateInput, SubscriptionUncheckedUpdateInput> & SubscriptionUncheckedUpdateInput) | (Without<...> & SubscriptionUpdateInput)'.
+app/api/subscriptions/webhook/route.ts(146,18): error TS2353: Object literal may only specify known properties, and 'razorpaySubscriptionId' does not exist in type 'SubscriptionWhereInput'.
+app/api/subscriptions/webhook/route.ts(150,22): error TS2551: Property 'transaction' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'. Did you mean '$transaction'?
+app/api/subscriptions/webhook/route.ts(167,17): error TS2353: Object literal may only specify known properties, and 'currentPeriodStart' does not exist in type '(Without<SubscriptionUpdateInput, SubscriptionUncheckedUpdateInput> & SubscriptionUncheckedUpdateInput) | (Without<...> & SubscriptionUpdateInput)'.
+app/api/subscriptions/webhook/route.ts(180,18): error TS2353: Object literal may only specify known properties, and 'razorpaySubscriptionId' does not exist in type 'SubscriptionWhereInput'.
+app/api/subscriptions/webhook/route.ts(188,17): error TS2353: Object literal may only specify known properties, and 'cancelledAt' does not exist in type '(Without<SubscriptionUpdateInput, SubscriptionUncheckedUpdateInput> & SubscriptionUncheckedUpdateInput) | (Without<...> & SubscriptionUpdateInput)'.
+app/api/subscriptions/webhook/route.ts(200,18): error TS2353: Object literal may only specify known properties, and 'razorpaySubscriptionId' does not exist in type 'SubscriptionWhereInput'.
+app/api/subscriptions/webhook/route.ts(215,18): error TS2353: Object literal may only specify known properties, and 'razorpaySubscriptionId' does not exist in type 'SubscriptionWhereInput'.
+app/api/v1/students/[id]/progress/route.ts(26,17): error TS2353: Object literal may only specify known properties, and 'classStudents' does not exist in type 'UserWhereInput'.
+app/api/v1/students/[id]/progress/route.ts(35,17): error TS2353: Object literal may only specify known properties, and 'classStudents' does not exist in type 'UserInclude<DefaultArgs>'.
+app/api/v1/students/[id]/progress/route.ts(121,17): error TS2353: Object literal may only specify known properties, and 'currentStreak' does not exist in type 'UserSelect<DefaultArgs>'.
+app/api/v1/students/[id]/progress/route.ts(131,35): error TS2339: Property 'name' does not exist on type '{ id: string; createdAt: Date; email: string; password: string; role: UserRole; schoolId: string; firstName: string; lastName: string; avatar: string | null; updatedAt: Date; }'.
+app/api/v1/students/[id]/progress/route.ts(133,38): error TS2339: Property 'classStudents' does not exist on type '{ id: string; createdAt: Date; email: string; password: string; role: UserRole; schoolId: string; firstName: string; lastName: string; avatar: string | null; updatedAt: Date; }'.
+app/api/v1/students/[id]/progress/route.ts(133,56): error TS7006: Parameter 'cs' implicitly has an 'any' type.
+app/api/v1/students/[id]/progress/route.ts(142,44): error TS2339: Property 'currentStreak' does not exist on type '{ id: string; createdAt: Date; email: string; password: string; role: UserRole; schoolId: string; firstName: string; lastName: string; avatar: string | null; updatedAt: Date; }'.
+app/api/v1/students/[id]/progress/route.ts(143,44): error TS2339: Property 'longestStreak' does not exist on type '{ id: string; createdAt: Date; email: string; password: string; role: UserRole; schoolId: string; firstName: string; lastName: string; avatar: string | null; updatedAt: Date; }'.
+app/api/v1/students/[id]/progress/route.ts(144,41): error TS2339: Property 'lastActiveDate' does not exist on type '{ id: string; createdAt: Date; email: string; password: string; role: UserRole; schoolId: string; firstName: string; lastName: string; avatar: string | null; updatedAt: Date; }'.
+app/api/v1/students/route.ts(62,21): error TS2353: Object literal may only specify known properties, and 'name' does not exist in type 'UserSelect<DefaultArgs>'.
+app/api/v1/students/route.ts(138,21): error TS2353: Object literal may only specify known properties, and 'name' does not exist in type '(Without<UserCreateInput, UserUncheckedCreateInput> & UserUncheckedCreateInput) | (Without<...> & UserCreateInput)'.
+app/api/v1/students/route.ts(159,28): error TS2339: Property 'name' does not exist on type '{ id: string; createdAt: Date; email: string; password: string; role: UserRole; schoolId: string; firstName: string; lastName: string; avatar: string | null; updatedAt: Date; }'.
+app/dashboard/admin/page.tsx(59,30): error TS2322: Type '{ daysLeft: number; plan: SubscriptionPlan; }' is not assignable to type 'IntrinsicAttributes & TrialBannerProps'.
+  Property 'daysLeft' does not exist on type 'IntrinsicAttributes & TrialBannerProps'.
+app/dashboard/student/achievements/page.tsx(78,99): error TS2339: Property 'title' does not exist on type '{ id: string; createdAt: Date; name: string; description: string; xpReward: number; icon: string; rarity: string; category: string; condition: JsonValue; }'.
+app/games/play/page.tsx(295,70): error TS2322: Type '{ onComplete: (score: number, accuracy: number, timeSpent: number, difficulty: string, reactionTime?: number | undefined, hintsUsed?: number | undefined, storyContent?: string | undefined) => Promise<...>; }' is not assignable to type 'IntrinsicAttributes & LogicPuzzleProps'.
+  Property 'onComplete' does not exist on type 'IntrinsicAttributes & LogicPuzzleProps'.
+app/games/play/page.tsx(296,78): error TS2322: Type '{ onComplete: (score: number, accuracy: number, timeSpent: number, difficulty: string, reactionTime?: number | undefined, hintsUsed?: number | undefined, storyContent?: string | undefined) => Promise<...>; }' is not assignable to type 'IntrinsicAttributes & PatternSequenceProps'.
+  Property 'onComplete' does not exist on type 'IntrinsicAttributes & PatternSequenceProps'.
+app/games/play/page.tsx(298,75): error TS2322: Type '{ onComplete: (score: number, accuracy: number, timeSpent: number, difficulty: string, reactionTime?: number | undefined, hintsUsed?: number | undefined, storyContent?: string | undefined) => Promise<...>; }' is not assignable to type 'IntrinsicAttributes & FocusChallengeProps'.
+  Property 'onComplete' does not exist on type 'IntrinsicAttributes & FocusChallengeProps'.
+app/games/play/page.tsx(303,70): error TS2322: Type '(score: number, accuracy: number, timeSpent: number, difficulty: string, reactionTime?: number, hintsUsed?: number, storyContent?: string) => Promise<void>' is not assignable to type '(score: number, accuracy: number, timeSpent: number, difficulty: string, reactionTime?: number | undefined, hintsUsed?: number | undefined, mistakes?: number | undefined) => void'.
+  Types of parameters 'storyContent' and 'mistakes' are incompatible.
+    Type 'number | undefined' is not assignable to type 'string | undefined'.
+      Type 'number' is not assignable to type 'string'.
+components/games/ColorMatch.tsx(107,56): error TS2345: Argument of type '"lightning"' is not assignable to parameter of type '"perfect" | "excellent" | "good" | "tryAgain"'.
+components/games/KidsTypingTutor.tsx(102,51): error TS2339: Property 'points' does not exist on type 'TypingExercise'.
+components/games/LogicPuzzle.tsx(116,52): error TS2345: Argument of type '"brilliant"' is not assignable to parameter of type '"perfect" | "excellent" | "good" | "tryAgain"'.
+components/games/MemoryMatchMultiplayer.tsx(75,36): error TS2339: Property 'slice' does not exist on type 'ContentPool'.
+components/games/MemoryMatchMultiplayer.tsx(79,32): error TS7006: Parameter 'pair' implicitly has an 'any' type.
+components/games/MemoryMatchMultiplayer.tsx(79,38): error TS7006: Parameter 'index' implicitly has an 'any' type.
+components/games/MemoryMatchMultiplayer.tsx(93,43): error TS2339: Property 'pairId' does not exist on type 'MemoryCard'.
+components/games/MemoryMatchMultiplayer.tsx(108,31): error TS2339: Property 'pairId' does not exist on type 'MemoryCard'.
+components/games/MemoryMatchMultiplayer.tsx(108,48): error TS2339: Property 'pairId' does not exist on type 'MemoryCard'.
+components/games/MemoryMatchMultiplayer.tsx(114,38): error TS2339: Property 'pairId' does not exist on type 'MemoryCard'.
+components/games/MemoryMatchMultiplayer.tsx(292,103): error TS2339: Property 'pairId' does not exist on type 'MemoryCard'.
+components/games/MemoryMatchMultiplayer.tsx(302,67): error TS2339: Property 'pairId' does not exist on type 'MemoryCard'.
+components/games/MemoryMatchMultiplayer.tsx(304,55): error TS2339: Property 'content' does not exist on type 'MemoryCard'.
+components/games/ScienceQuizMultiplayer.tsx(91,27): error TS2367: This comparison appears to be unintentional because the types 'string' and 'number' have no overlap.
+components/games/ScienceQuizMultiplayer.tsx(325,42): error TS2339: Property 'category' does not exist on type '{ question: string; topic: "biology" | "chemistry" | "physics" | "earth-science"; imageUrl?: string | undefined; explanation?: string | undefined; }'.
+components/games/ScienceQuizMultiplayer.tsx(327,53): error TS2339: Property 'category' does not exist on type '{ question: string; topic: "biology" | "chemistry" | "physics" | "earth-science"; imageUrl?: string | undefined; explanation?: string | undefined; }'.
+components/games/ScienceQuizMultiplayer.tsx(340,35): error TS2367: This comparison appears to be unintentional because the types 'string' and 'number' have no overlap.
+components/games/SpeedMath.tsx(110,44): error TS2339: Property 'points' does not exist on type 'MathProblem'.
+components/games/SpeedMath.tsx(113,47): error TS2339: Property 'timeLimit' does not exist on type 'MathProblem'.
+components/games/SpeedMath.tsx(256,102): error TS2339: Property 'difficulty' does not exist on type 'MathProblem'.
+components/games/SpeedMath.tsx(257,49): error TS2339: Property 'difficulty' does not exist on type 'MathProblem'.
+components/games/SpeedMath.tsx(258,53): error TS2339: Property 'difficulty' does not exist on type 'MathProblem'.
+components/games/SpeedMath.tsx(261,46): error TS2339: Property 'difficulty' does not exist on type 'MathProblem'.
+components/games/SpeedMath.tsx(264,46): error TS2339: Property 'points' does not exist on type 'MathProblem'.
+components/games/SpeedMathMultiplayer.tsx(109,44): error TS2339: Property 'points' does not exist on type 'MathProblem'.
+components/games/TypingSpeedMultiplayer.tsx(103,26): error TS2339: Property 'playSpeed' does not exist on type 'SoundManager'.
+components/games/WordScramble.tsx(163,19): error TS2339: Property 'info' does not exist on type '{ (message: Message, opts?: Partial<Pick<Toast, "id" | "className" | "style" | "icon" | "position" | "duration" | "ariaProps" | "iconTheme" | "toasterId" | "removeDelay">> | undefined): string; ... 8 more ...; promise<T>(promise: Promise<...> | (() => Promise<...>), msgs: { ...; }, opts?: DefaultToastOptions | undef...'.
+components/games/WorldFlagsMultiplayer.tsx(91,27): error TS2367: This comparison appears to be unintentional because the types 'string' and 'number' have no overlap.
+components/games/WorldFlagsMultiplayer.tsx(98,26): error TS2339: Property 'playSpeed' does not exist on type 'SoundManager'.
+components/games/WorldFlagsMultiplayer.tsx(351,35): error TS2367: This comparison appears to be unintentional because the types 'string' and 'number' have no overlap.
+components/LimitReachedModal.tsx(6,31): error TS2307: Cannot find module 'lucide-react' or its corresponding type declarations.
+components/PremiumFeatureLock.tsx(5,22): error TS2307: Cannot find module 'lucide-react' or its corresponding type declarations.
+components/UpgradePromptModal.tsx(6,27): error TS2307: Cannot find module 'lucide-react' or its corresponding type declarations.
+lib/analytics/track.ts(38,22): error TS2339: Property 'analyticsEvent' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.
+lib/analytics/track.ts(144,33): error TS2339: Property 'analyticsEvent' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.
+lib/analytics/track.ts(150,27): error TS7006: Parameter 'acc' implicitly has an 'any' type.
+lib/analytics/track.ts(150,32): error TS7006: Parameter 'event' implicitly has an 'any' type.
+lib/analytics/track.ts(160,33): error TS2339: Property 'analyticsEvent' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.
+lib/api-utils.ts(36,40): error TS2339: Property 'apiKey' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.
+lib/api-utils.ts(51,22): error TS2339: Property 'apiKey' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.
+lib/api-utils.ts(84,18): error TS2339: Property 'apiKey' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.
+lib/auth-with-google.ts(23,19): error TS2322: Type '(profile: any) => Promise<{ id: any; name: any; email: any; image: any; emailVerified: Date | null; }>' is not assignable to type '(profile: any, tokens: TokenSetParameters) => Awaitable<User>'.
+  Type 'Promise<{ id: any; name: any; email: any; image: any; emailVerified: Date | null; }>' is not assignable to type 'Awaitable<User>'.
+    Type 'Promise<{ id: any; name: any; email: any; image: any; emailVerified: Date | null; }>' is not assignable to type 'PromiseLike<User>'.
+      Types of property 'then' are incompatible.
+        Type '<TResult1 = { id: any; name: any; email: any; image: any; emailVerified: Date | null; }, TResult2 = never>(onfulfilled?: ((value: { id: any; name: any; email: any; image: any; emailVerified: Date | null; }) => TResult1 | PromiseLike<...>) | null | undefined, onrejected?: ((reason: any) => TResult2 | PromiseLike<...>...' is not assignable to type '<TResult1 = User, TResult2 = never>(onfulfilled?: ((value: User) => TResult1 | PromiseLike<TResult1>) | null | undefined, onrejected?: ((reason: any) => TResult2 | PromiseLike<...>) | null | undefined) => PromiseLike<...>'.
+          Types of parameters 'onfulfilled' and 'onfulfilled' are incompatible.
+            Types of parameters 'value' and 'value' are incompatible.
+              Type '{ id: any; name: any; email: any; image: any; emailVerified: Date | null; }' is missing the following properties from type 'User': role, schoolId
+lib/auth-with-google.ts(56,29): error TS2353: Object literal may only specify known properties, and 'name' does not exist in type '(Without<UserCreateInput, UserUncheckedCreateInput> & UserUncheckedCreateInput) | (Without<...> & UserCreateInput)'.
+lib/auth-with-google.ts(74,25): error TS2353: Object literal may only specify known properties, and 'name' does not exist in type 'UserSelect<DefaultArgs>'.
+lib/cache/utils.ts(29,40): error TS2345: Argument of type '{ ex: number | undefined; }' is not assignable to parameter of type 'SetCommandOptions | undefined'.
+  Type '{ ex: number | undefined; }' is not assignable to type '({ get?: boolean | undefined; } & { ex: number; px?: undefined; exat?: undefined; pxat?: undefined; keepTtl?: undefined; } & { nx: true; xx?: undefined; }) | ({ get?: boolean | undefined; } & { ex: number; px?: undefined; exat?: undefined; pxat?: undefined; keepTtl?: undefined; } & { ...; }) | ... 15 more ... | ({ ....'.
+    Type '{ ex: number | undefined; }' is not assignable to type '{ get?: boolean | undefined; } & { ex?: undefined; px?: undefined; exat?: undefined; pxat?: undefined; keepTtl?: undefined; } & { xx?: undefined; nx?: undefined; }'.
+      Type '{ ex: number | undefined; }' is not assignable to type '{ ex?: undefined; px?: undefined; exat?: undefined; pxat?: undefined; keepTtl?: undefined; }'.
+        Types of property 'ex' are incompatible.
+          Type 'number | undefined' is not assignable to type 'undefined'.
+            Type 'number' is not assignable to type 'undefined'.
+lib/challenges/generator.ts(73,13): error TS2322: Type 'string' is not assignable to type 'GameType'.
+lib/challenges/generator.ts(112,9): error TS2322: Type '{ userId: string; challengeId: string; score: number; }' is not assignable to type '(Without<ChallengeCompletionCreateInput, ChallengeCompletionUncheckedCreateInput> & ChallengeCompletionUncheckedCreateInput) | (Without<...> & ChallengeCompletionCreateInput)'.
+  Type '{ userId: string; challengeId: string; score: number; }' is not assignable to type 'Without<ChallengeCompletionCreateInput, ChallengeCompletionUncheckedCreateInput> & ChallengeCompletionUncheckedCreateInput'.
+    Property 'earnedXP' is missing in type '{ userId: string; challengeId: string; score: number; }' but required in type 'ChallengeCompletionUncheckedCreateInput'.
+lib/challenges/generator.ts(123,13): error TS2353: Object literal may only specify known properties, and 'xp' does not exist in type '(Without<UserUpdateInput, UserUncheckedUpdateInput> & UserUncheckedUpdateInput) | (Without<...> & UserUpdateInput)'.
+lib/challenges/generator.ts(123,40): error TS2339: Property 'xpReward' does not exist on type '{ id: string; createdAt: Date; date: Date; gameType: GameType; difficulty: string; description: string; bonusXP: number; }'.
+lib/emails/send.ts(23,13): error TS2322: Type 'Promise<string>' is not assignable to type 'string'.
+lib/emails/templates/streak-reminder.tsx(27,39): error TS2322: Type 'number' is not assignable to type 'ReactNode & string'.
+lib/emails/templates/trial-ending.tsx(29,53): error TS2322: Type 'number' is not assignable to type 'ReactNode & string'.
+lib/game-engine/adaptive-difficulty.ts(34,17): error TS2561: Object literal may only specify known properties, but 'studentId_gameType' does not exist in type 'DifficultyProgressionWhereUniqueInput'. Did you mean to write 'userId_gameType'?
+lib/game-engine/adaptive-difficulty.ts(41,44): error TS2339: Property 'currentDifficulty' does not exist on type '{ userId: string; id: string; updatedAt: Date; gameType: GameType; difficulty: string; sessionsPlayed: number; averageAccuracy: number; lastAdjustedAt: Date; }'.
+lib/game-engine/adaptive-difficulty.ts(47,17): error TS2322: Type 'string' is not assignable to type 'GameType | EnumGameTypeFilter<"GameResult"> | undefined'.
+lib/game-engine/adaptive-difficulty.ts(142,17): error TS2561: Object literal may only specify known properties, but 'studentId_gameType' does not exist in type 'DifficultyProgressionWhereUniqueInput'. Did you mean to write 'userId_gameType'?
+lib/game-engine/adaptive-difficulty.ts(148,17): error TS2353: Object literal may only specify known properties, and 'currentDifficulty' does not exist in type '(Without<DifficultyProgressionUpdateInput, DifficultyProgressionUncheckedUpdateInput> & DifficultyProgressionUncheckedUpdateInput) | (Without<...> & DifficultyProgressionUpdateInput)'.
+lib/game-engine/adaptive-difficulty.ts(153,17): error TS2322: Type 'string' is not assignable to type 'GameType'.
+lib/game-engine/adaptive-difficulty.ts(215,17): error TS2561: Object literal may only specify known properties, but 'studentId_gameType' does not exist in type 'DifficultyProgressionWhereUniqueInput'. Did you mean to write 'userId_gameType'?
+lib/game-engine/adaptive-difficulty.ts(222,30): error TS2339: Property 'currentDifficulty' does not exist on type '{ userId: string; id: string; updatedAt: Date; gameType: GameType; difficulty: string; sessionsPlayed: number; averageAccuracy: number; lastAdjustedAt: Date; }'.
+lib/game-engine/content-pools/analogies-master.ts(13,18): error TS2322: Type '{ id: string; type: string; difficulty: string; content: { analogy: string; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }[]' is not assignable to type 'Question[]'.
+  Type '{ id: string; type: string; difficulty: string; content: { analogy: string; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }' is not assignable to type 'Question'.
+    Types of property 'difficulty' are incompatible.
+      Type 'string' is not assignable to type '"EASY" | "MEDIUM" | "HARD" | "CHALLENGE"'.
+lib/game-engine/content-pools/analogies-master.ts(13,24): error TS2322: Type '{ id: string; type: string; difficulty: string; content: { analogy: string; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }[]' is not assignable to type 'Question[]'.
+  Type '{ id: string; type: string; difficulty: string; content: { analogy: string; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }' is not assignable to type 'Question'.
+    Types of property 'difficulty' are incompatible.
+      Type 'string' is not assignable to type '"EASY" | "MEDIUM" | "HARD" | "CHALLENGE"'.
+lib/game-engine/content-pools/analogies-master.ts(13,38): error TS2322: Type '{ id: string; type: string; difficulty: string; content: { analogy: string; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }[]' is not assignable to type 'Question[]'.
+  Type '{ id: string; type: string; difficulty: string; content: { analogy: string; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }' is not assignable to type 'Question'.
+    Types of property 'difficulty' are incompatible.
+      Type 'string' is not assignable to type '"EASY" | "MEDIUM" | "HARD" | "CHALLENGE"'.
+lib/game-engine/content-pools/analogies-master.ts(13,50): error TS2322: Type '{ id: string; type: string; difficulty: string; content: { analogy: string; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }[]' is not assignable to type 'Question[]'.
+  Type '{ id: string; type: string; difficulty: string; content: { analogy: string; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }' is not assignable to type 'Question'.
+    Types of property 'difficulty' are incompatible.
+      Type 'string' is not assignable to type '"EASY" | "MEDIUM" | "HARD" | "CHALLENGE"'.
+lib/game-engine/content-pools/attention-switch.ts(18,18): error TS2322: Type '{ id: string; type: string; difficulty: string; content: { task: string; items: string[]; }; correctAnswer: number; timeLimit: number; points: number; }[]' is not assignable to type 'Question[]'.
+  Type '{ id: string; type: string; difficulty: string; content: { task: string; items: string[]; }; correctAnswer: number; timeLimit: number; points: number; }' is not assignable to type 'Question'.
+    Types of property 'difficulty' are incompatible.
+      Type 'string' is not assignable to type '"EASY" | "MEDIUM" | "HARD" | "CHALLENGE"'.
+lib/game-engine/content-pools/attention-switch.ts(18,24): error TS2322: Type '{ id: string; type: string; difficulty: string; content: { task: string; items: string[]; }; correctAnswer: number; timeLimit: number; points: number; }[]' is not assignable to type 'Question[]'.
+  Type '{ id: string; type: string; difficulty: string; content: { task: string; items: string[]; }; correctAnswer: number; timeLimit: number; points: number; }' is not assignable to type 'Question'.
+    Types of property 'difficulty' are incompatible.
+      Type 'string' is not assignable to type '"EASY" | "MEDIUM" | "HARD" | "CHALLENGE"'.
+lib/game-engine/content-pools/attention-switch.ts(18,38): error TS2322: Type '{ id: string; type: string; difficulty: string; content: { task: string; items: string[]; }; correctAnswer: number; timeLimit: number; points: number; }[]' is not assignable to type 'Question[]'.
+  Type '{ id: string; type: string; difficulty: string; content: { task: string; items: string[]; }; correctAnswer: number; timeLimit: number; points: number; }' is not assignable to type 'Question'.
+    Types of property 'difficulty' are incompatible.
+      Type 'string' is not assignable to type '"EASY" | "MEDIUM" | "HARD" | "CHALLENGE"'.
+lib/game-engine/content-pools/attention-switch.ts(18,50): error TS2322: Type '{ id: string; type: string; difficulty: string; content: { task: string; items: string[]; }; correctAnswer: number; timeLimit: number; points: number; }[]' is not assignable to type 'Question[]'.
+  Type '{ id: string; type: string; difficulty: string; content: { task: string; items: string[]; }; correctAnswer: number; timeLimit: number; points: number; }' is not assignable to type 'Question'.
+    Types of property 'difficulty' are incompatible.
+      Type 'string' is not assignable to type '"EASY" | "MEDIUM" | "HARD" | "CHALLENGE"'.
+lib/game-engine/content-pools/creative-story.ts(13,18): error TS2322: Type '{ id: string; type: string; difficulty: string; content: { prompt: string; context: string; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }[]' is not assignable to type 'Question[]'.
+  Type '{ id: string; type: string; difficulty: string; content: { prompt: string; context: string; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }' is not assignable to type 'Question'.
+    Types of property 'difficulty' are incompatible.
+      Type 'string' is not assignable to type '"EASY" | "MEDIUM" | "HARD" | "CHALLENGE"'.
+lib/game-engine/content-pools/creative-story.ts(13,24): error TS2322: Type '{ id: string; type: string; difficulty: string; content: { prompt: string; context: string; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }[]' is not assignable to type 'Question[]'.
+  Type '{ id: string; type: string; difficulty: string; content: { prompt: string; context: string; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }' is not assignable to type 'Question'.
+    Types of property 'difficulty' are incompatible.
+      Type 'string' is not assignable to type '"EASY" | "MEDIUM" | "HARD" | "CHALLENGE"'.
+lib/game-engine/content-pools/creative-story.ts(13,38): error TS2322: Type '{ id: string; type: string; difficulty: string; content: { prompt: string; context: string; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }[]' is not assignable to type 'Question[]'.
+  Type '{ id: string; type: string; difficulty: string; content: { prompt: string; context: string; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }' is not assignable to type 'Question'.
+    Types of property 'difficulty' are incompatible.
+      Type 'string' is not assignable to type '"EASY" | "MEDIUM" | "HARD" | "CHALLENGE"'.
+lib/game-engine/content-pools/creative-story.ts(13,50): error TS2322: Type '{ id: string; type: string; difficulty: string; content: { prompt: string; context: string; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }[]' is not assignable to type 'Question[]'.
+  Type '{ id: string; type: string; difficulty: string; content: { prompt: string; context: string; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }' is not assignable to type 'Question'.
+    Types of property 'difficulty' are incompatible.
+      Type 'string' is not assignable to type '"EASY" | "MEDIUM" | "HARD" | "CHALLENGE"'.
+lib/game-engine/content-pools/logic-grid.ts(19,18): error TS2322: Type '{ id: string; type: string; difficulty: string; content: { clues: string[]; question: string; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }[]' is not assignable to type 'Question[]'.
+  Type '{ id: string; type: string; difficulty: string; content: { clues: string[]; question: string; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }' is not assignable to type 'Question'.
+    Types of property 'difficulty' are incompatible.
+      Type 'string' is not assignable to type '"EASY" | "MEDIUM" | "HARD" | "CHALLENGE"'.
+lib/game-engine/content-pools/logic-grid.ts(19,24): error TS2322: Type '{ id: string; type: string; difficulty: string; content: { clues: string[]; question: string; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }[]' is not assignable to type 'Question[]'.
+  Type '{ id: string; type: string; difficulty: string; content: { clues: string[]; question: string; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }' is not assignable to type 'Question'.
+    Types of property 'difficulty' are incompatible.
+      Type 'string' is not assignable to type '"EASY" | "MEDIUM" | "HARD" | "CHALLENGE"'.
+lib/game-engine/content-pools/logic-grid.ts(19,38): error TS2322: Type '{ id: string; type: string; difficulty: string; content: { clues: string[]; question: string; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }[]' is not assignable to type 'Question[]'.
+  Type '{ id: string; type: string; difficulty: string; content: { clues: string[]; question: string; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }' is not assignable to type 'Question'.
+    Types of property 'difficulty' are incompatible.
+      Type 'string' is not assignable to type '"EASY" | "MEDIUM" | "HARD" | "CHALLENGE"'.
+lib/game-engine/content-pools/logic-grid.ts(19,50): error TS2322: Type '{ id: string; type: string; difficulty: string; content: { clues: string[]; question: string; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }[]' is not assignable to type 'Question[]'.
+  Type '{ id: string; type: string; difficulty: string; content: { clues: string[]; question: string; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }' is not assignable to type 'Question'.
+    Types of property 'difficulty' are incompatible.
+      Type 'string' is not assignable to type '"EASY" | "MEDIUM" | "HARD" | "CHALLENGE"'.
+lib/game-engine/content-pools/mini-strategy.ts(13,18): error TS2322: Type '{ id: string; type: string; difficulty: string; content: { scenario: string; goal: string; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }[]' is not assignable to type 'Question[]'.
+  Type '{ id: string; type: string; difficulty: string; content: { scenario: string; goal: string; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }' is not assignable to type 'Question'.
+    Types of property 'difficulty' are incompatible.
+      Type 'string' is not assignable to type '"EASY" | "MEDIUM" | "HARD" | "CHALLENGE"'.
+lib/game-engine/content-pools/mini-strategy.ts(13,24): error TS2322: Type '{ id: string; type: string; difficulty: string; content: { scenario: string; goal: string; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }[]' is not assignable to type 'Question[]'.
+  Type '{ id: string; type: string; difficulty: string; content: { scenario: string; goal: string; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }' is not assignable to type 'Question'.
+    Types of property 'difficulty' are incompatible.
+      Type 'string' is not assignable to type '"EASY" | "MEDIUM" | "HARD" | "CHALLENGE"'.
+lib/game-engine/content-pools/mini-strategy.ts(13,38): error TS2322: Type '{ id: string; type: string; difficulty: string; content: { scenario: string; goal: string; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }[]' is not assignable to type 'Question[]'.
+  Type '{ id: string; type: string; difficulty: string; content: { scenario: string; goal: string; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }' is not assignable to type 'Question'.
+    Types of property 'difficulty' are incompatible.
+      Type 'string' is not assignable to type '"EASY" | "MEDIUM" | "HARD" | "CHALLENGE"'.
+lib/game-engine/content-pools/mini-strategy.ts(13,50): error TS2322: Type '{ id: string; type: string; difficulty: string; content: { scenario: string; goal: string; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }[]' is not assignable to type 'Question[]'.
+  Type '{ id: string; type: string; difficulty: string; content: { scenario: string; goal: string; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }' is not assignable to type 'Question'.
+    Types of property 'difficulty' are incompatible.
+      Type 'string' is not assignable to type '"EASY" | "MEDIUM" | "HARD" | "CHALLENGE"'.
+lib/game-engine/content-pools/riddle-sprint.ts(13,18): error TS2322: Type '{ id: string; type: string; difficulty: string; content: { riddle: string; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }[]' is not assignable to type 'Question[]'.
+  Type '{ id: string; type: string; difficulty: string; content: { riddle: string; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }' is not assignable to type 'Question'.
+    Types of property 'difficulty' are incompatible.
+      Type 'string' is not assignable to type '"EASY" | "MEDIUM" | "HARD" | "CHALLENGE"'.
+lib/game-engine/content-pools/riddle-sprint.ts(13,24): error TS2322: Type '{ id: string; type: string; difficulty: string; content: { riddle: string; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }[]' is not assignable to type 'Question[]'.
+  Type '{ id: string; type: string; difficulty: string; content: { riddle: string; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }' is not assignable to type 'Question'.
+    Types of property 'difficulty' are incompatible.
+      Type 'string' is not assignable to type '"EASY" | "MEDIUM" | "HARD" | "CHALLENGE"'.
+lib/game-engine/content-pools/riddle-sprint.ts(13,38): error TS2322: Type '{ id: string; type: string; difficulty: string; content: { riddle: string; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }[]' is not assignable to type 'Question[]'.
+  Type '{ id: string; type: string; difficulty: string; content: { riddle: string; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }' is not assignable to type 'Question'.
+    Types of property 'difficulty' are incompatible.
+      Type 'string' is not assignable to type '"EASY" | "MEDIUM" | "HARD" | "CHALLENGE"'.
+lib/game-engine/content-pools/riddle-sprint.ts(13,50): error TS2322: Type '{ id: string; type: string; difficulty: string; content: { riddle: string; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }[]' is not assignable to type 'Question[]'.
+  Type '{ id: string; type: string; difficulty: string; content: { riddle: string; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }' is not assignable to type 'Question'.
+    Types of property 'difficulty' are incompatible.
+      Type 'string' is not assignable to type '"EASY" | "MEDIUM" | "HARD" | "CHALLENGE"'.
+lib/game-engine/content-pools/shape-constructor.ts(19,18): error TS2322: Type '{ id: string; type: string; difficulty: string; content: { pieces: string[]; target: string; instruction: string; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }[]' is not assignable to type 'Question[]'.
+  Type '{ id: string; type: string; difficulty: string; content: { pieces: string[]; target: string; instruction: string; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }' is not assignable to type 'Question'.
+    Types of property 'difficulty' are incompatible.
+      Type 'string' is not assignable to type '"EASY" | "MEDIUM" | "HARD" | "CHALLENGE"'.
+lib/game-engine/content-pools/shape-constructor.ts(19,24): error TS2322: Type '{ id: string; type: string; difficulty: string; content: { pieces: string[]; target: string; instruction: string; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }[]' is not assignable to type 'Question[]'.
+  Type '{ id: string; type: string; difficulty: string; content: { pieces: string[]; target: string; instruction: string; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }' is not assignable to type 'Question'.
+    Types of property 'difficulty' are incompatible.
+      Type 'string' is not assignable to type '"EASY" | "MEDIUM" | "HARD" | "CHALLENGE"'.
+lib/game-engine/content-pools/shape-constructor.ts(19,38): error TS2322: Type '{ id: string; type: string; difficulty: string; content: { pieces: string[]; target: string; instruction: string; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }[]' is not assignable to type 'Question[]'.
+  Type '{ id: string; type: string; difficulty: string; content: { pieces: string[]; target: string; instruction: string; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }' is not assignable to type 'Question'.
+    Types of property 'difficulty' are incompatible.
+      Type 'string' is not assignable to type '"EASY" | "MEDIUM" | "HARD" | "CHALLENGE"'.
+lib/game-engine/content-pools/shape-constructor.ts(19,50): error TS2322: Type '{ id: string; type: string; difficulty: string; content: { pieces: string[]; target: string; instruction: string; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }[]' is not assignable to type 'Question[]'.
+  Type '{ id: string; type: string; difficulty: string; content: { pieces: string[]; target: string; instruction: string; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }' is not assignable to type 'Question'.
+    Types of property 'difficulty' are incompatible.
+      Type 'string' is not assignable to type '"EASY" | "MEDIUM" | "HARD" | "CHALLENGE"'.
+lib/game-engine/content-pools/speed-math.ts(6,39): error TS2307: Cannot find module './content-generator' or its corresponding type declarations.
+lib/game-engine/content-pools/speed-math.ts(61,13): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'MathProblem'.
+lib/game-engine/content-pools/speed-math.ts(149,13): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'MathProblem'.
+lib/game-engine/content-pools/speed-math.ts(183,13): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'MathProblem'.
+lib/game-engine/content-pools/time-planner.ts(13,18): error TS2322: Type '{ id: string; type: string; difficulty: string; content: { scenario: string; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }[]' is not assignable to type 'Question[]'.
+  Type '{ id: string; type: string; difficulty: string; content: { scenario: string; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }' is not assignable to type 'Question'.
+    Types of property 'difficulty' are incompatible.
+      Type 'string' is not assignable to type '"EASY" | "MEDIUM" | "HARD" | "CHALLENGE"'.
+lib/game-engine/content-pools/time-planner.ts(13,24): error TS2322: Type '{ id: string; type: string; difficulty: string; content: { scenario: string; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }[]' is not assignable to type 'Question[]'.
+  Type '{ id: string; type: string; difficulty: string; content: { scenario: string; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }' is not assignable to type 'Question'.
+    Types of property 'difficulty' are incompatible.
+      Type 'string' is not assignable to type '"EASY" | "MEDIUM" | "HARD" | "CHALLENGE"'.
+lib/game-engine/content-pools/time-planner.ts(13,38): error TS2322: Type '{ id: string; type: string; difficulty: string; content: { scenario: string; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }[]' is not assignable to type 'Question[]'.
+  Type '{ id: string; type: string; difficulty: string; content: { scenario: string; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }' is not assignable to type 'Question'.
+    Types of property 'difficulty' are incompatible.
+      Type 'string' is not assignable to type '"EASY" | "MEDIUM" | "HARD" | "CHALLENGE"'.
+lib/game-engine/content-pools/time-planner.ts(13,50): error TS2322: Type '{ id: string; type: string; difficulty: string; content: { scenario: string; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }[]' is not assignable to type 'Question[]'.
+  Type '{ id: string; type: string; difficulty: string; content: { scenario: string; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }' is not assignable to type 'Question'.
+    Types of property 'difficulty' are incompatible.
+      Type 'string' is not assignable to type '"EASY" | "MEDIUM" | "HARD" | "CHALLENGE"'.
+lib/game-engine/content-pools/typing-speed.ts(13,18): error TS2322: Type '{ id: string; type: string; difficulty: string; content: { text: string; wpm: number; }; correctAnswer: number; timeLimit: number; points: number; }[]' is not assignable to type 'Question[]'.
+  Type '{ id: string; type: string; difficulty: string; content: { text: string; wpm: number; }; correctAnswer: number; timeLimit: number; points: number; }' is not assignable to type 'Question'.
+    Types of property 'difficulty' are incompatible.
+      Type 'string' is not assignable to type '"EASY" | "MEDIUM" | "HARD" | "CHALLENGE"'.
+lib/game-engine/content-pools/typing-speed.ts(13,24): error TS2322: Type '{ id: string; type: string; difficulty: string; content: { text: string; wpm: number; }; correctAnswer: number; timeLimit: number; points: number; }[]' is not assignable to type 'Question[]'.
+  Type '{ id: string; type: string; difficulty: string; content: { text: string; wpm: number; }; correctAnswer: number; timeLimit: number; points: number; }' is not assignable to type 'Question'.
+    Types of property 'difficulty' are incompatible.
+      Type 'string' is not assignable to type '"EASY" | "MEDIUM" | "HARD" | "CHALLENGE"'.
+lib/game-engine/content-pools/typing-speed.ts(13,38): error TS2322: Type '{ id: string; type: string; difficulty: string; content: { text: string; wpm: number; }; correctAnswer: number; timeLimit: number; points: number; }[]' is not assignable to type 'Question[]'.
+  Type '{ id: string; type: string; difficulty: string; content: { text: string; wpm: number; }; correctAnswer: number; timeLimit: number; points: number; }' is not assignable to type 'Question'.
+    Types of property 'difficulty' are incompatible.
+      Type 'string' is not assignable to type '"EASY" | "MEDIUM" | "HARD" | "CHALLENGE"'.
+lib/game-engine/content-pools/typing-speed.ts(13,50): error TS2322: Type '{ id: string; type: string; difficulty: string; content: { text: string; wpm: number; }; correctAnswer: number; timeLimit: number; points: number; }[]' is not assignable to type 'Question[]'.
+  Type '{ id: string; type: string; difficulty: string; content: { text: string; wpm: number; }; correctAnswer: number; timeLimit: number; points: number; }' is not assignable to type 'Question'.
+    Types of property 'difficulty' are incompatible.
+      Type 'string' is not assignable to type '"EASY" | "MEDIUM" | "HARD" | "CHALLENGE"'.
+lib/game-engine/content-pools/visual-rotation.ts(19,18): error TS2322: Type '{ id: string; type: string; difficulty: string; content: { shape: string; rotation: number; options: string[]; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }[]' is not assignable to type 'Question[]'.
+  Type '{ id: string; type: string; difficulty: string; content: { shape: string; rotation: number; options: string[]; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }' is not assignable to type 'Question'.
+    Types of property 'difficulty' are incompatible.
+      Type 'string' is not assignable to type '"EASY" | "MEDIUM" | "HARD" | "CHALLENGE"'.
+lib/game-engine/content-pools/visual-rotation.ts(19,24): error TS2322: Type '{ id: string; type: string; difficulty: string; content: { shape: string; rotation: number; options: string[]; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }[]' is not assignable to type 'Question[]'.
+  Type '{ id: string; type: string; difficulty: string; content: { shape: string; rotation: number; options: string[]; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }' is not assignable to type 'Question'.
+    Types of property 'difficulty' are incompatible.
+      Type 'string' is not assignable to type '"EASY" | "MEDIUM" | "HARD" | "CHALLENGE"'.
+lib/game-engine/content-pools/visual-rotation.ts(19,38): error TS2322: Type '{ id: string; type: string; difficulty: string; content: { shape: string; rotation: number; options: string[]; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }[]' is not assignable to type 'Question[]'.
+  Type '{ id: string; type: string; difficulty: string; content: { shape: string; rotation: number; options: string[]; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }' is not assignable to type 'Question'.
+    Types of property 'difficulty' are incompatible.
+      Type 'string' is not assignable to type '"EASY" | "MEDIUM" | "HARD" | "CHALLENGE"'.
+lib/game-engine/content-pools/visual-rotation.ts(19,50): error TS2322: Type '{ id: string; type: string; difficulty: string; content: { shape: string; rotation: number; options: string[]; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }[]' is not assignable to type 'Question[]'.
+  Type '{ id: string; type: string; difficulty: string; content: { shape: string; rotation: number; options: string[]; }; options: string[]; correctAnswer: number; timeLimit: number; points: number; }' is not assignable to type 'Question'.
+    Types of property 'difficulty' are incompatible.
+      Type 'string' is not assignable to type '"EASY" | "MEDIUM" | "HARD" | "CHALLENGE"'.

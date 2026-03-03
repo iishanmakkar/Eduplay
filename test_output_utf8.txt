@@ -1,0 +1,102 @@
+﻿node.exe : PASS __test
+s__/validation/answer-
+integrity.test.ts
+At line:1 char:1
++ & "C:\Program Files\
+nodejs/node.exe" 
+"C:\Program 
+Files\nodejs/node_mo 
+...
++ ~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~
+~~~~~
+    + CategoryInfo    
+          : NotSpeci  
+  fied: (PASS __tes   
+ ts__/...tegrity.t    
+est.ts:String) []    
+, RemoteException
+    + FullyQualifiedE 
+   rrorId : NativeCo  
+  mmandError
+ 
+PASS __tests__/validat
+ion/math-engine.test.t
+s
+PASS __tests__/lib/xp-
+calculator.test.ts
+PASS __tests__/validat
+ion/multiplayer-dedup.
+test.ts
+FAIL __tests__/validat
+ion/multiplayer-dedup.
+test.js
+  ΓùÅ Test suite 
+failed to run
+
+    ReferenceError: 
+Request is not defined
+
+    [0m [90m  9 
+|[39m         
+[36mconst[39m body 
+[33m=[39m 
+[36mawait[39m 
+req[33m.[39mjson()
+     [90m 10 |[39m  
+       
+[36mconst[39m { 
+id[33m,[39m 
+gameType[33m,[39m 
+mode[33m,[39m partic
+ipants[33m,[39m 
+duration } 
+[33m=[39m body
+    [31m[1m>[22m[3
+9m[90m 11 |[39m
+     [90m    |[39m 
+[31m[1m^[22m[39m
+     [90m 12 |[39m  
+       
+[36mconst[39m 
+session [33m=[39m 
+[36mawait[39m getSer
+verSession(authOptions
+)
+     [90m 13 |[39m
+     [90m 14 |[39m  
+       [90m// 
+SECURITY: Require 
+authentication ΓÇö 
+unauthenticated users 
+cannot earn 
+XP[39m[0m
+
+      at 
+Object.Request (node_m
+odules/next/src/server
+/web/spec-extension/re
+quest.ts:15:34)
+      at 
+Object.<anonymous> (no
+de_modules/next/server
+.js:2:16)
+      at 
+Object.<anonymous> (ap
+p/api/multiplayer/matc
+h/route.ts:11:17)
+      at 
+Object.require (__test
+s__/validation/multipl
+ayer-dedup.test.js:85:
+15)
+
+Test Suites: 1 
+failed, 4 passed, 5 
+total
+Tests:       36 
+passed, 36 total
+Snapshots:   0 total
+Time:        1.458 s
+Ran all test suites.

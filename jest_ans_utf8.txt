@@ -1,0 +1,516 @@
+﻿node.exe : FAIL __test
+s__/validation/answer-
+validator.test.ts
+At line:1 char:1
++ & "C:\Program Files\
+nodejs/node.exe" 
+"C:\Program 
+Files\nodejs/node_mo 
+...
++ ~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~
+~~~~~
+    + CategoryInfo    
+          : 
+NotSpecified: (F    
+AIL __tests__/...lida 
+   
+tor.test.ts:String) [ 
+   ], RemoteException
+    + 
+FullyQualifiedError   
+ Id : 
+NativeCommandErr    or
+ 
+  normalizeText()
+    ΓêÜ trims leading 
+and trailing 
+whitespace (3 ms)
+    ΓêÜ converts to 
+lowercase
+    ΓêÜ collapses 
+internal whitespace 
+(1 ms)
+    ΓêÜ handles empty 
+string (1 ms)
+  normalizeNumeric()
+    ΓêÜ parses 
+integer strings
+    ΓêÜ parses 
+negative integers
+    ΓêÜ parses 
+decimals
+    ΓêÜ handles 
+leading plus sign
+    ΓêÜ strips commas 
+(e.g. 1,000) (1 ms)
+    ΓêÜ normalises 
+negative zero to 
+positive zero (1 ms)
+    ΓêÜ returns NaN 
+for non-numeric input
+  validateAnswer ΓÇö 
+math_numeric 
+(SpeedMath, MathGrid)
+    ΓêÜ accepts exact 
+integer match (1 ms)
+    ΓêÜ accepts 
+answer within ┬▒0.01 
+tolerance
+    ΓêÜ rejects 
+answer outside ┬▒0.01 
+tolerance
+    ΓêÜ accepts 
+negative answers
+    ΓêÜ rejects 
+non-numeric submitted 
+answer
+    ΓêÜ accepts 
+answer with leading 
+whitespace
+  validateAnswer ΓÇö 
+text_exact 
+(ScienceQuiz, 
+WorldFlags)
+    ΓêÜ accepts 
+case-insensitive match
+    ΓêÜ accepts 
+trimmed match
+    ΓêÜ rejects 
+partial match
+  validateAnswer ΓÇö 
+text_multi 
+(CodeBreaker, 
+RiddleSprint)
+    ΓêÜ accepts first 
+valid answer (1 ms)
+    ΓêÜ accepts any 
+pipe-separated valid 
+answer
+    ΓêÜ rejects 
+answer not in the 
+pipe-separated list
+    ΓêÜ details shows 
+count of valid 
+answers checked (1 ms)
+  validateAnswer ΓÇö 
+typing_exact 
+(TypingSpeed, 
+KidsTypingTutor)
+    ΓêÜ accepts exact 
+character match
+    ΓêÜ rejects 
+different casing 
+(typing is 
+case-sensitive)
+    ΓêÜ trims 
+surrounding 
+whitespace before 
+comparison
+  validateAnswer ΓÇö 
+word_scramble 
+(WordScramble)
+    ΓêÜ accepts exact 
+match
+    ΓêÜ accepts 
+hyphenated variant 
+(good-bye === goodbye)
+    ΓêÜ is 
+case-insensitive
+    ΓêÜ rejects wrong 
+word
+  validateAnswer ΓÇö 
+sequence_ordered 
+(PatternSequence)
+    ΓêÜ accepts 
+correct sequence (1 
+ms)
+    ΓêÜ rejects 
+sequence with wrong 
+order
+    ΓêÜ rejects 
+sequence with wrong 
+values
+    ΓêÜ returns 
+failed matchType for 
+non-JSON submitted 
+answer
+  validateAnswer ΓÇö 
+generic_choice 
+(ColorMatch, 
+VisualRotation)
+    ΓêÜ accepts 
+case-insensitive MCQ 
+answer
+    ΓêÜ rejects wrong 
+option (1 ms)
+  validateMemoryPairIn
+tegrity()
+    ΓêÜ passes for a 
+valid even-paired 
+card set
+    ΓêÜ fails for odd 
+number of cards
+    ΓêÜ fails when a 
+card appears only 
+once (orphan) (1 ms)
+    ΓêÜ fails when a 
+card appears 4 times 
+(quadruple)
+  
+validateAnswerBatch()
+    ΓêÜ validates 
+multiple answers and 
+returns per-question 
+results
+  GAME_STRATEGY_MAP 
+covers all 25 games
+    ├ù game 
+SPEED_MATH has a 
+validation strategy 
+(2 ms)
+    ├ù game MATH_GRID 
+has a validation 
+strategy (1 ms)
+    ├ù game 
+MATH_SUDOKU has a 
+validation strategy 
+(1 ms)
+    ΓêÜ game 
+SCIENCE_QUIZ has a 
+validation strategy
+    ΓêÜ game 
+WORLD_FLAGS has a 
+validation strategy
+    ΓêÜ game 
+CODE_BREAKER has a 
+validation strategy
+    ΓêÜ game 
+RIDDLE_SPRINT has a 
+validation strategy
+    ΓêÜ game 
+ANALOGIES has a 
+validation strategy
+    ΓêÜ game 
+CREATIVE_STORY has a 
+validation strategy
+    ├ù game 
+PATTERN_SEQUENCE has 
+a validation strategy
+    ├ù game 
+SEQUENCE_BUILDER has 
+a validation strategy
+    ΓêÜ game 
+TYPING_SPEED has a 
+validation strategy 
+(1 ms)
+    ΓêÜ game 
+KIDS_TYPING has a 
+validation strategy
+    ΓêÜ game 
+WORD_SCRAMBLE has a 
+validation strategy
+    ΓêÜ game 
+MEMORY_MATCH has a 
+validation strategy
+    ΓêÜ game 
+MEMORY_MATRIX has a 
+validation strategy 
+(1 ms)
+    ΓêÜ game 
+MEMORY_GRID_ADV has a 
+validation strategy
+    ΓêÜ game 
+LOGIC_PUZZLE has a 
+validation strategy
+    ΓêÜ game 
+LOGIC_GRID has a 
+validation strategy
+    ΓêÜ game 
+FOCUS_CHALLENGE has a 
+validation strategy
+    ΓêÜ game 
+ATTENTION_SWITCH has 
+a validation strategy
+    ΓêÜ game 
+COLOR_MATCH has a 
+validation strategy 
+(1 ms)
+    ΓêÜ game 
+VISUAL_ROTATION has a 
+validation strategy
+    ΓêÜ game 
+SHAPE_CONSTRUCTOR has 
+a validation strategy
+    ΓêÜ game 
+MINI_STRATEGY has a 
+validation strategy
+    ΓêÜ game 
+STRATEGY_BUILDER has 
+a validation strategy
+    ΓêÜ game 
+TIME_PLANNER has a 
+validation strategy
+
+  ΓùÅ 
+GAME_STRATEGY_MAP 
+covers all 25 games 
+ΓÇ║ game SPEED_MATH 
+has a validation 
+strategy
+
+    expect(received).t
+oBe(expected) // 
+Object.is equality
+
+    Expected: true
+    Received: false
+
+    [0m [90m 290 
+|[39m         
+[36mconst[39m 
+result [33m=[39m val
+idateAnswer([32m'test
+'[39m[33m,[39m [32
+m'test'[39m[33m,[39
+m gameType)
+     [90m 291 |[39m 
+        expect(result)
+[33m.[39mtoBeDefined
+()
+    [31m[1m>[22m[3
+9m[90m 292 |[39m    
+     expect(result[33
+m.[39misCorrect)[33m
+.[39mtoBe([36mtrue[
+39m) [90m// 'test' 
+=== 'test', always 
+correct[39m
+     [90m     |[39m 
+                      
+           
+[31m[1m^[22m[39m
+     [90m 293 |[39m 
+    })
+     [90m 294 |[39m 
+})
+     [90m 295 
+|[39m[0m
+
+      at toBe (__tests
+__/validation/answer-v
+alidator.test.ts:292:3
+4)
+
+  ΓùÅ 
+GAME_STRATEGY_MAP 
+covers all 25 games 
+ΓÇ║ game MATH_GRID 
+has a validation 
+strategy
+
+    expect(received).t
+oBe(expected) // 
+Object.is equality
+
+    Expected: true
+    Received: false
+
+    [0m [90m 290 
+|[39m         
+[36mconst[39m 
+result [33m=[39m val
+idateAnswer([32m'test
+'[39m[33m,[39m [32
+m'test'[39m[33m,[39
+m gameType)
+     [90m 291 |[39m 
+        expect(result)
+[33m.[39mtoBeDefined
+()
+    [31m[1m>[22m[3
+9m[90m 292 |[39m    
+     expect(result[33
+m.[39misCorrect)[33m
+.[39mtoBe([36mtrue[
+39m) [90m// 'test' 
+=== 'test', always 
+correct[39m
+     [90m     |[39m 
+                      
+           
+[31m[1m^[22m[39m
+     [90m 293 |[39m 
+    })
+     [90m 294 |[39m 
+})
+     [90m 295 
+|[39m[0m
+
+      at toBe (__tests
+__/validation/answer-v
+alidator.test.ts:292:3
+4)
+
+  ΓùÅ 
+GAME_STRATEGY_MAP 
+covers all 25 games 
+ΓÇ║ game MATH_SUDOKU 
+has a validation 
+strategy
+
+    expect(received).t
+oBe(expected) // 
+Object.is equality
+
+    Expected: true
+    Received: false
+
+    [0m [90m 290 
+|[39m         
+[36mconst[39m 
+result [33m=[39m val
+idateAnswer([32m'test
+'[39m[33m,[39m [32
+m'test'[39m[33m,[39
+m gameType)
+     [90m 291 |[39m 
+        expect(result)
+[33m.[39mtoBeDefined
+()
+    [31m[1m>[22m[3
+9m[90m 292 |[39m    
+     expect(result[33
+m.[39misCorrect)[33m
+.[39mtoBe([36mtrue[
+39m) [90m// 'test' 
+=== 'test', always 
+correct[39m
+     [90m     |[39m 
+                      
+           
+[31m[1m^[22m[39m
+     [90m 293 |[39m 
+    })
+     [90m 294 |[39m 
+})
+     [90m 295 
+|[39m[0m
+
+      at toBe (__tests
+__/validation/answer-v
+alidator.test.ts:292:3
+4)
+
+  ΓùÅ 
+GAME_STRATEGY_MAP 
+covers all 25 games 
+ΓÇ║ game 
+PATTERN_SEQUENCE has 
+a validation strategy
+
+    expect(received).t
+oBe(expected) // 
+Object.is equality
+
+    Expected: true
+    Received: false
+
+    [0m [90m 290 
+|[39m         
+[36mconst[39m 
+result [33m=[39m val
+idateAnswer([32m'test
+'[39m[33m,[39m [32
+m'test'[39m[33m,[39
+m gameType)
+     [90m 291 |[39m 
+        expect(result)
+[33m.[39mtoBeDefined
+()
+    [31m[1m>[22m[3
+9m[90m 292 |[39m    
+     expect(result[33
+m.[39misCorrect)[33m
+.[39mtoBe([36mtrue[
+39m) [90m// 'test' 
+=== 'test', always 
+correct[39m
+     [90m     |[39m 
+                      
+           
+[31m[1m^[22m[39m
+     [90m 293 |[39m 
+    })
+     [90m 294 |[39m 
+})
+     [90m 295 
+|[39m[0m
+
+      at toBe (__tests
+__/validation/answer-v
+alidator.test.ts:292:3
+4)
+
+  ΓùÅ 
+GAME_STRATEGY_MAP 
+covers all 25 games 
+ΓÇ║ game 
+SEQUENCE_BUILDER has 
+a validation strategy
+
+    expect(received).t
+oBe(expected) // 
+Object.is equality
+
+    Expected: true
+    Received: false
+
+    [0m [90m 290 
+|[39m         
+[36mconst[39m 
+result [33m=[39m val
+idateAnswer([32m'test
+'[39m[33m,[39m [32
+m'test'[39m[33m,[39
+m gameType)
+     [90m 291 |[39m 
+        expect(result)
+[33m.[39mtoBeDefined
+()
+    [31m[1m>[22m[3
+9m[90m 292 |[39m    
+     expect(result[33
+m.[39misCorrect)[33m
+.[39mtoBe([36mtrue[
+39m) [90m// 'test' 
+=== 'test', always 
+correct[39m
+     [90m     |[39m 
+                      
+           
+[31m[1m^[22m[39m
+     [90m 293 |[39m 
+    })
+     [90m 294 |[39m 
+})
+     [90m 295 
+|[39m[0m
+
+      at toBe (__tests
+__/validation/answer-v
+alidator.test.ts:292:3
+4)
+
+Test Suites: 1 
+failed, 1 total
+Tests:       5 
+failed, 64 passed, 69 
+total
+Snapshots:   0 total
+Time:        1.31 s
+Ran all test suites 
+matching __tests__/val
+idation/answer-validat
+or.test.ts.

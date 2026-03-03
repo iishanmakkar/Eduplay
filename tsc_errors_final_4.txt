@@ -1,0 +1,99 @@
+app/api/cron/send-assignment-reminders/route.ts(31,25): error TS2353: Object literal may only specify known properties, and 'enrollments' does not exist in type 'ClassInclude<DefaultArgs>'.
+app/api/cron/send-assignment-reminders/route.ts(46,52): error TS2339: Property 'gameResults' does not exist on type '{ id: string; createdAt: Date; updatedAt: Date; classId: string; teacherId: string; gameType: GameType; description: string | null; title: string; dueDate: Date; }'.
+app/api/cron/send-assignment-reminders/route.ts(46,68): error TS7006: Parameter 'r' implicitly has an 'any' type.
+app/api/cron/send-assignment-reminders/route.ts(48,49): error TS2551: Property 'class' does not exist on type '{ id: string; createdAt: Date; updatedAt: Date; classId: string; teacherId: string; gameType: GameType; description: string | null; title: string; dueDate: Date; }'. Did you mean 'classId'?
+app/api/cron/send-assignment-reminders/route.ts(72,25): error TS2322: Type '{ userId: any; type: string; status: string; }' is not assignable to type '(Without<EmailLogCreateInput, EmailLogUncheckedCreateInput> & EmailLogUncheckedCreateInput) | (Without<...> & EmailLogCreateInput)'.
+  Type '{ userId: any; type: string; status: string; }' is not assignable to type 'Without<EmailLogUncheckedCreateInput, EmailLogCreateInput> & EmailLogCreateInput'.
+    Type '{ userId: any; type: string; status: string; }' is missing the following properties from type 'EmailLogCreateInput': subject, user
+app/api/cron/send-assignment-reminders/route.ts(86,29): error TS2353: Object literal may only specify known properties, and 'error' does not exist in type '(Without<EmailLogCreateInput, EmailLogUncheckedCreateInput> & EmailLogUncheckedCreateInput) | (Without<...> & EmailLogCreateInput)'.
+app/api/cron/send-streak-reminders/route.ts(57,21): error TS2322: Type '{ userId: string; type: string; status: string; }' is not assignable to type '(Without<EmailLogCreateInput, EmailLogUncheckedCreateInput> & EmailLogUncheckedCreateInput) | (Without<...> & EmailLogCreateInput)'.
+  Type '{ userId: string; type: string; status: string; }' is not assignable to type 'Without<EmailLogCreateInput, EmailLogUncheckedCreateInput> & EmailLogUncheckedCreateInput'.
+    Property 'subject' is missing in type '{ userId: string; type: string; status: string; }' but required in type 'EmailLogUncheckedCreateInput'.
+app/api/cron/send-streak-reminders/route.ts(71,25): error TS2353: Object literal may only specify known properties, and 'error' does not exist in type 'Without<EmailLogCreateInput, EmailLogUncheckedCreateInput> & EmailLogUncheckedCreateInput'.
+app/api/cron/send-trial-reminders/route.ts(67,25): error TS2322: Type '{ userId: string; type: string; status: string; }' is not assignable to type '(Without<EmailLogCreateInput, EmailLogUncheckedCreateInput> & EmailLogUncheckedCreateInput) | (Without<...> & EmailLogCreateInput)'.
+  Type '{ userId: string; type: string; status: string; }' is not assignable to type 'Without<EmailLogCreateInput, EmailLogUncheckedCreateInput> & EmailLogUncheckedCreateInput'.
+    Property 'subject' is missing in type '{ userId: string; type: string; status: string; }' but required in type 'EmailLogUncheckedCreateInput'.
+app/api/cron/send-trial-reminders/route.ts(81,29): error TS2353: Object literal may only specify known properties, and 'error' does not exist in type 'Without<EmailLogCreateInput, EmailLogUncheckedCreateInput> & EmailLogUncheckedCreateInput'.
+app/api/settings/api-keys/route.ts(21,17): error TS2353: Object literal may only specify known properties, and 'userId' does not exist in type 'ApiKeyWhereInput'.
+app/api/settings/api-keys/route.ts(26,17): error TS2353: Object literal may only specify known properties, and 'permissions' does not exist in type 'ApiKeySelect<DefaultArgs>'.
+app/api/settings/api-keys/route.ts(108,17): error TS2353: Object literal may only specify known properties, and 'userId' does not exist in type 'ApiKeyWhereInput'.
+app/api/subscriptions/verify/route.ts(95,17): error TS2353: Object literal may only specify known properties, and 'plan' does not exist in type 'Without<TransactionCreateInput, TransactionUncheckedCreateInput> & TransactionUncheckedCreateInput'.
+app/api/subscriptions/webhook/route.ts(157,17): error TS2353: Object literal may only specify known properties, and 'plan' does not exist in type 'Without<TransactionCreateInput, TransactionUncheckedCreateInput> & TransactionUncheckedCreateInput'.
+app/api/v1/students/[id]/progress/route.ts(122,17): error TS2353: Object literal may only specify known properties, and 'currentStreak' does not exist in type 'UserSelect<DefaultArgs>'.
+app/api/v1/students/[id]/progress/route.ts(132,35): error TS2339: Property 'name' does not exist on type '{ classesEnrolled: ({ class: { id: string; createdAt: Date; updatedAt: Date; schoolId: string; name: string; subject: Subject | null; grade: string; emoji: string; classCode: string; teacherId: string; }; } & { ...; })[]; streakData: { ...; } | null; } & { ...; }'.
+app/api/v1/students/route.ts(62,21): error TS2353: Object literal may only specify known properties, and 'name' does not exist in type 'UserSelect<DefaultArgs>'.
+app/api/v1/students/route.ts(138,21): error TS2353: Object literal may only specify known properties, and 'name' does not exist in type '(Without<UserCreateInput, UserUncheckedCreateInput> & UserUncheckedCreateInput) | (Without<...> & UserCreateInput)'.
+app/api/v1/students/route.ts(159,28): error TS2339: Property 'name' does not exist on type '{ id: string; email: string; password: string; firstName: string; lastName: string; role: UserRole; avatar: string | null; createdAt: Date; updatedAt: Date; schoolId: string; xp: number; level: number; }'.
+app/dashboard/admin/page.tsx(59,30): error TS2322: Type '{ daysLeft: number; plan: SubscriptionPlan; }' is not assignable to type 'IntrinsicAttributes & TrialBannerProps'.
+  Property 'daysLeft' does not exist on type 'IntrinsicAttributes & TrialBannerProps'.
+app/dashboard/student/achievements/page.tsx(78,99): error TS2339: Property 'title' does not exist on type '{ id: string; createdAt: Date; name: string; description: string; xpReward: number; icon: string; rarity: string; category: string; condition: JsonValue; }'.
+app/games/play/page.tsx(295,70): error TS2322: Type '{ onComplete: (score: number, accuracy: number, timeSpent: number, difficulty: string, reactionTime?: number | undefined, hintsUsed?: number | undefined, storyContent?: string | undefined) => Promise<...>; }' is not assignable to type 'IntrinsicAttributes & LogicPuzzleProps'.
+  Property 'onComplete' does not exist on type 'IntrinsicAttributes & LogicPuzzleProps'.
+app/games/play/page.tsx(296,78): error TS2322: Type '{ onComplete: (score: number, accuracy: number, timeSpent: number, difficulty: string, reactionTime?: number | undefined, hintsUsed?: number | undefined, storyContent?: string | undefined) => Promise<...>; }' is not assignable to type 'IntrinsicAttributes & PatternSequenceProps'.
+  Property 'onComplete' does not exist on type 'IntrinsicAttributes & PatternSequenceProps'.
+app/games/play/page.tsx(298,75): error TS2322: Type '{ onComplete: (score: number, accuracy: number, timeSpent: number, difficulty: string, reactionTime?: number | undefined, hintsUsed?: number | undefined, storyContent?: string | undefined) => Promise<...>; }' is not assignable to type 'IntrinsicAttributes & FocusChallengeProps'.
+  Property 'onComplete' does not exist on type 'IntrinsicAttributes & FocusChallengeProps'.
+app/games/play/page.tsx(303,70): error TS2322: Type '(score: number, accuracy: number, timeSpent: number, difficulty: string, reactionTime?: number, hintsUsed?: number, storyContent?: string) => Promise<void>' is not assignable to type '(score: number, accuracy: number, timeSpent: number, difficulty: string, reactionTime?: number | undefined, hintsUsed?: number | undefined, mistakes?: number | undefined) => void'.
+  Types of parameters 'storyContent' and 'mistakes' are incompatible.
+    Type 'number | undefined' is not assignable to type 'string | undefined'.
+      Type 'number' is not assignable to type 'string'.
+components/games/ColorMatch.tsx(107,56): error TS2345: Argument of type '"lightning"' is not assignable to parameter of type '"perfect" | "excellent" | "good" | "tryAgain"'.
+components/games/KidsTypingTutor.tsx(102,51): error TS2339: Property 'points' does not exist on type 'TypingExercise'.
+components/games/LogicPuzzle.tsx(116,52): error TS2345: Argument of type '"brilliant"' is not assignable to parameter of type '"perfect" | "excellent" | "good" | "tryAgain"'.
+components/games/MemoryMatchMultiplayer.tsx(75,36): error TS2339: Property 'slice' does not exist on type 'ContentPool'.
+components/games/MemoryMatchMultiplayer.tsx(79,32): error TS7006: Parameter 'pair' implicitly has an 'any' type.
+components/games/MemoryMatchMultiplayer.tsx(79,38): error TS7006: Parameter 'index' implicitly has an 'any' type.
+components/games/MemoryMatchMultiplayer.tsx(93,43): error TS2339: Property 'pairId' does not exist on type 'MemoryCard'.
+components/games/MemoryMatchMultiplayer.tsx(108,31): error TS2339: Property 'pairId' does not exist on type 'MemoryCard'.
+components/games/MemoryMatchMultiplayer.tsx(108,48): error TS2339: Property 'pairId' does not exist on type 'MemoryCard'.
+components/games/MemoryMatchMultiplayer.tsx(114,38): error TS2339: Property 'pairId' does not exist on type 'MemoryCard'.
+components/games/MemoryMatchMultiplayer.tsx(292,103): error TS2339: Property 'pairId' does not exist on type 'MemoryCard'.
+components/games/MemoryMatchMultiplayer.tsx(302,67): error TS2339: Property 'pairId' does not exist on type 'MemoryCard'.
+components/games/MemoryMatchMultiplayer.tsx(304,55): error TS2339: Property 'content' does not exist on type 'MemoryCard'.
+components/games/ScienceQuizMultiplayer.tsx(91,27): error TS2367: This comparison appears to be unintentional because the types 'string' and 'number' have no overlap.
+components/games/ScienceQuizMultiplayer.tsx(325,42): error TS2339: Property 'category' does not exist on type '{ question: string; topic: "biology" | "chemistry" | "physics" | "earth-science"; imageUrl?: string | undefined; explanation?: string | undefined; }'.
+components/games/ScienceQuizMultiplayer.tsx(327,53): error TS2339: Property 'category' does not exist on type '{ question: string; topic: "biology" | "chemistry" | "physics" | "earth-science"; imageUrl?: string | undefined; explanation?: string | undefined; }'.
+components/games/ScienceQuizMultiplayer.tsx(340,35): error TS2367: This comparison appears to be unintentional because the types 'string' and 'number' have no overlap.
+components/games/TypingSpeedMultiplayer.tsx(103,26): error TS2339: Property 'playSpeed' does not exist on type 'SoundManager'.
+components/games/WordScramble.tsx(163,19): error TS2339: Property 'info' does not exist on type '{ (message: Message, opts?: Partial<Pick<Toast, "style" | "duration" | "className" | "id" | "icon" | "ariaProps" | "position" | "iconTheme" | "toasterId" | "removeDelay">> | undefined): string; ... 8 more ...; promise<T>(promise: Promise<...> | (() => Promise<...>), msgs: { ...; }, opts?: DefaultToastOptions | undef...'.
+components/games/WorldFlagsMultiplayer.tsx(91,27): error TS2367: This comparison appears to be unintentional because the types 'string' and 'number' have no overlap.
+components/games/WorldFlagsMultiplayer.tsx(98,26): error TS2339: Property 'playSpeed' does not exist on type 'SoundManager'.
+components/games/WorldFlagsMultiplayer.tsx(351,35): error TS2367: This comparison appears to be unintentional because the types 'string' and 'number' have no overlap.
+lib/analytics/track.ts(42,17): error TS2353: Object literal may only specify known properties, and 'schoolId' does not exist in type '(Without<AnalyticsEventCreateInput, AnalyticsEventUncheckedCreateInput> & AnalyticsEventUncheckedCreateInput) | (Without<...> & AnalyticsEventCreateInput)'.
+lib/analytics/track.ts(78,9): error TS2353: Object literal may only specify known properties, and 'eventType' does not exist in type 'TrackEventOptions'.
+lib/analytics/track.ts(97,9): error TS2353: Object literal may only specify known properties, and 'eventType' does not exist in type 'TrackEventOptions'.
+lib/analytics/track.ts(115,9): error TS2353: Object literal may only specify known properties, and 'eventType' does not exist in type 'TrackEventOptions'.
+lib/analytics/track.ts(151,19): error TS2339: Property 'eventType' does not exist on type 'PickEnumerable<AnalyticsEventGroupByOutputType, "event"[]> & { _count: number; }'.
+lib/api-utils.ts(38,24): error TS2353: Object literal may only specify known properties, and 'user' does not exist in type 'ApiKeyInclude<DefaultArgs>'.
+lib/api-utils.ts(41,38): error TS2339: Property 'isActive' does not exist on type '{ id: string; createdAt: Date; updatedAt: Date; schoolId: string; name: string | null; key: string; }'.
+lib/api-utils.ts(46,23): error TS2339: Property 'expiresAt' does not exist on type '{ id: string; createdAt: Date; updatedAt: Date; schoolId: string; name: string | null; key: string; }'.
+lib/api-utils.ts(46,46): error TS2339: Property 'expiresAt' does not exist on type '{ id: string; createdAt: Date; updatedAt: Date; schoolId: string; name: string | null; key: string; }'.
+lib/api-utils.ts(53,21): error TS2353: Object literal may only specify known properties, and 'lastUsedAt' does not exist in type '(Without<ApiKeyUpdateInput, ApiKeyUncheckedUpdateInput> & ApiKeyUncheckedUpdateInput) | (Without<...> & ApiKeyUpdateInput)'.
+lib/api-utils.ts(58,31): error TS2339: Property 'userId' does not exist on type '{ id: string; createdAt: Date; updatedAt: Date; schoolId: string; name: string | null; key: string; }'.
+lib/api-utils.ts(59,36): error TS2339: Property 'permissions' does not exist on type '{ id: string; createdAt: Date; updatedAt: Date; schoolId: string; name: string | null; key: string; }'.
+lib/api-utils.ts(88,13): error TS2353: Object literal may only specify known properties, and 'userId' does not exist in type '(Without<ApiKeyCreateInput, ApiKeyUncheckedCreateInput> & ApiKeyUncheckedCreateInput) | (Without<...> & ApiKeyCreateInput)'.
+lib/auth-with-google.ts(59,29): error TS2353: Object literal may only specify known properties, and 'emailVerified' does not exist in type 'Without<UserCreateInput, UserUncheckedCreateInput> & UserUncheckedCreateInput'.
+lib/auth-with-google.ts(76,25): error TS2353: Object literal may only specify known properties, and 'name' does not exist in type 'UserSelect<DefaultArgs>'.
+lib/cache/utils.ts(29,40): error TS2345: Argument of type '{ ex: number | undefined; }' is not assignable to parameter of type 'SetCommandOptions | undefined'.
+  Type '{ ex: number | undefined; }' is not assignable to type '({ get?: boolean | undefined; } & { ex: number; px?: undefined; exat?: undefined; pxat?: undefined; keepTtl?: undefined; } & { nx: true; xx?: undefined; }) | ({ get?: boolean | undefined; } & { ex: number; px?: undefined; exat?: undefined; pxat?: undefined; keepTtl?: undefined; } & { ...; }) | ... 15 more ... | ({ ....'.
+    Type '{ ex: number | undefined; }' is not assignable to type '{ get?: boolean | undefined; } & { ex?: undefined; px?: undefined; exat?: undefined; pxat?: undefined; keepTtl?: undefined; } & { xx?: undefined; nx?: undefined; }'.
+      Type '{ ex: number | undefined; }' is not assignable to type '{ ex?: undefined; px?: undefined; exat?: undefined; pxat?: undefined; keepTtl?: undefined; }'.
+        Types of property 'ex' are incompatible.
+          Type 'number | undefined' is not assignable to type 'undefined'.
+            Type 'number' is not assignable to type 'undefined'.
+lib/challenges/generator.ts(73,13): error TS2322: Type 'string' is not assignable to type 'GameType'.
+lib/challenges/generator.ts(112,9): error TS2322: Type '{ userId: string; challengeId: string; score: number; }' is not assignable to type '(Without<ChallengeCompletionCreateInput, ChallengeCompletionUncheckedCreateInput> & ChallengeCompletionUncheckedCreateInput) | (Without<...> & ChallengeCompletionCreateInput)'.
+  Type '{ userId: string; challengeId: string; score: number; }' is not assignable to type 'Without<ChallengeCompletionCreateInput, ChallengeCompletionUncheckedCreateInput> & ChallengeCompletionUncheckedCreateInput'.
+    Property 'earnedXP' is missing in type '{ userId: string; challengeId: string; score: number; }' but required in type 'ChallengeCompletionUncheckedCreateInput'.
+lib/challenges/generator.ts(123,40): error TS2339: Property 'xpReward' does not exist on type '{ id: string; createdAt: Date; date: Date; gameType: GameType; difficulty: string; description: string; bonusXP: number; }'.
+lib/emails/send.ts(23,13): error TS2322: Type 'Promise<string>' is not assignable to type 'string'.
+lib/emails/templates/streak-reminder.tsx(27,39): error TS2322: Type 'number' is not assignable to type 'ReactNode & string'.
+lib/emails/templates/trial-ending.tsx(29,53): error TS2322: Type 'number' is not assignable to type 'ReactNode & string'.
+lib/game-engine/adaptive-difficulty.ts(34,17): error TS2561: Object literal may only specify known properties, but 'studentId_gameType' does not exist in type 'DifficultyProgressionWhereUniqueInput'. Did you mean to write 'userId_gameType'?
+lib/game-engine/adaptive-difficulty.ts(41,44): error TS2339: Property 'currentDifficulty' does not exist on type '{ id: string; updatedAt: Date; userId: string; gameType: GameType; difficulty: string; sessionsPlayed: number; averageAccuracy: number; lastAdjustedAt: Date; }'.
+lib/game-engine/adaptive-difficulty.ts(47,17): error TS2322: Type 'string' is not assignable to type 'GameType | EnumGameTypeFilter<"GameResult"> | undefined'.
+lib/game-engine/adaptive-difficulty.ts(142,17): error TS2561: Object literal may only specify known properties, but 'studentId_gameType' does not exist in type 'DifficultyProgressionWhereUniqueInput'. Did you mean to write 'userId_gameType'?
+lib/game-engine/adaptive-difficulty.ts(148,17): error TS2353: Object literal may only specify known properties, and 'currentDifficulty' does not exist in type '(Without<DifficultyProgressionUpdateInput, DifficultyProgressionUncheckedUpdateInput> & DifficultyProgressionUncheckedUpdateInput) | (Without<...> & DifficultyProgressionUpdateInput)'.
+lib/game-engine/adaptive-difficulty.ts(153,17): error TS2322: Type 'string' is not assignable to type 'GameType'.
+lib/game-engine/adaptive-difficulty.ts(215,17): error TS2561: Object literal may only specify known properties, but 'studentId_gameType' does not exist in type 'DifficultyProgressionWhereUniqueInput'. Did you mean to write 'userId_gameType'?
+lib/game-engine/adaptive-difficulty.ts(222,30): error TS2339: Property 'currentDifficulty' does not exist on type '{ id: string; updatedAt: Date; userId: string; gameType: GameType; difficulty: string; sessionsPlayed: number; averageAccuracy: number; lastAdjustedAt: Date; }'.
