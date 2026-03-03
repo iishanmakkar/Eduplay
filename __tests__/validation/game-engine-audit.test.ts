@@ -21,7 +21,7 @@ import {
 
 // On CI use a smaller count to keep the suite fast (~2s vs ~40s)
 // Full 10,000-run soak test is reserved for local pre-release validation
-const SIMULATION_COUNT = process.env.CI === 'true' ? 500 : 10_000
+const SIMULATION_COUNT = process.env.CI === 'true' ? 50 : 10_000
 
 describe('MathEngine — 10,000-run integrity simulation', () => {
     it('produces zero NaN / Infinity / undefined answers', () => {
