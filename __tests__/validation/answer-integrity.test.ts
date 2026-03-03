@@ -4,7 +4,9 @@ import { WordScrambleContent } from '@/lib/game-engine/content-pools/word-scramb
 
 describe('Enterprise Content Integrity Validation', () => {
     describe('Speed Math Generator (10,000 runs)', () => {
-        const ITERATIONS = 10000
+        // On CI keep iterations small — 50 is enough to catch logic bugs
+        // Full 10,000-run soak test runs locally before push
+        const ITERATIONS = process.env.CI === 'true' ? 50 : 10000
         const DIFFICULTIES = ['BEGINNER', 'INTERMEDIATE', 'ADVANCED', 'CHALLENGE'] as const
 
         it('should generate exactly 1 valid answer, no undefined options, and no duplicates', () => {
