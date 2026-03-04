@@ -1,8 +1,8 @@
 import { Ratelimit } from '@upstash/ratelimit'
 import { Redis } from '@upstash/redis/cloudflare'
 
-// Create a random in-memory backend for development/testing if no Redis credentials
-const isDev = process.env.NODE_ENV !== 'production' || !process.env.UPSTASH_REDIS_REST_URL
+// Use in-memory fallback when no Redis credentials are configured
+const isDev = process.env.NODE_ENV !== 'production' || !process.env.REDIS_URL || process.env.REDIS_URL.includes('placeholder')
 
 const cache = new Map()
 

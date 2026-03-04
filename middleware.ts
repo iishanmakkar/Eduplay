@@ -99,12 +99,19 @@ export async function middleware(request: NextRequest) {
     const isOnboarding = path.startsWith('/auth/onboarding')
     const isSetup = path.startsWith('/setup')
     const isJoin = path.startsWith('/join')
+    const isGameRoute = path.startsWith('/games') || path.startsWith('/aipoweredgames') || path.startsWith('/profile')
 
     // ── Redirect authenticated users away from auth pages ─────
     if (isAuthPage && !isOnboarding && token) {
         const role = token.role as string
         const dashboardUrl = ROLE_DASHBOARD_MAP[role] || '/dashboard'
         return NextResponse.redirect(new URL(dashboardUrl, request.url))
+    }
+
+    // ── Protect game / profile routes ─────────────────────────
+    if (isGameRoute && !token) {
+        const callbackUrl = encodeURIComponent(request.nextUrl.pathname + request.nextUrl.search)
+        return NextResponse.redirect(new URL(`/auth/signin?callbackUrl=${callbackUrl}`, request.url))
     }
 
     // ── Protect dashboard routes ───────────────────────────────
@@ -189,5 +196,17 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-    matcher: ['/dashboard/:path*', '/auth/:path*', '/api/:path*', '/setup/:path*', '/join/:path*'],
+    matcher: [
+        '/dashboard/:path*',
+        '/auth/:path*',
+        '/api/:path*',
+        '/setup/:path*',
+        '/join/:path*',
+        '/games/:path*',
+        '/games',
+        '/aipoweredgames/:path*',
+        '/aipoweredgames',
+        '/profile/:path*',
+        '/profile',
+    ],
 }

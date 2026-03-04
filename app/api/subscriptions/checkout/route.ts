@@ -15,9 +15,9 @@ export async function POST(req: NextRequest) {
             return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
         }
 
-        // Only admins can manage subscriptions
-        if (session.user.role !== 'ADMIN') {
-            return NextResponse.json({ error: 'Only admins can manage subscriptions' }, { status: 403 })
+        // Only school admins and owners can manage subscriptions
+        if (session.user.role !== 'SCHOOL' && session.user.role !== 'OWNER') {
+            return NextResponse.json({ error: 'Only school admins can manage subscriptions' }, { status: 403 })
         }
 
         const { plan, billingCycle } = await req.json()
