@@ -51,6 +51,16 @@ export default function MathGridSudoku({ onGameEnd, initialDifficulty = 'MEDIUM'
 
     const isSubmitting = useRef(false) // Lock
 
+    // Initialize puzzle on mount and re-generate when difficulty changes
+    useEffect(() => {
+        isSubmitting.current = false
+        setGameOver(false)
+        setMistakes(0)
+        setSelectedCell(null)
+        generatePuzzle(difficulty)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [difficulty])
+
     const handleCellChange = (row: number, col: number, value: string) => {
         if (gameOver || isSubmitting.current) return
 
