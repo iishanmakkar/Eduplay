@@ -171,6 +171,43 @@ export default function TeacherClassClient({ classData, totalXP, avgMastery, has
                     </div>
                 </div>
 
+                {/* ── Students Needing Help ── */}
+                {(() => {
+                    const atRisk = students.filter(s => {
+                        const avg = s.skillMasteries.length > 0
+                            ? s.skillMasteries.reduce((a, m) => a + m.masteryProbability, 0) / s.skillMasteries.length
+                            : -1
+                        return avg >= 0 && avg < 0.4
+                    })
+                    if (atRisk.length === 0) return null
+                    return (
+                        <div className="bg-rose-50 dark:bg-rose-900/10 border border-rose-200 dark:border-rose-500/30 rounded-2xl p-5 mb-8">
+                            <div className="flex items-start gap-3">
+                                <div className="text-2xl mt-0.5">⚠️</div>
+                                <div className="flex-1">
+                                    <h3 className="font-bold text-rose-700 dark:text-rose-400 mb-0.5">{atRisk.length} Student{atRisk.length > 1 ? 's' : ''} Need Extra Support</h3>
+                                    <p className="text-xs text-rose-500 dark:text-rose-400/70 mb-3">Average BKT mastery below 40% — consider targeted review sessions</p>
+                                    <div className="flex flex-wrap gap-2">
+                                        {atRisk.map(s => {
+                                            const avg = s.skillMasteries.reduce((a, m) => a + m.masteryProbability, 0) / s.skillMasteries.length
+                                            return (
+                                                <button key={s.id} onClick={() => setSelectedStudent(s)}
+                                                    className="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-slate-800 border border-rose-200 dark:border-rose-500/30 rounded-xl text-sm font-bold text-slate-700 dark:text-slate-300 hover:border-rose-400 transition-all">
+                                                    <div className="w-6 h-6 bg-rose-100 dark:bg-rose-900/40 rounded-full flex items-center justify-center text-xs font-black text-rose-600 dark:text-rose-400">
+                                                        {s.firstName[0]}
+                                                    </div>
+                                                    {s.firstName} {s.lastName}
+                                                    <span className="text-xs text-rose-500 font-mono">{Math.round(avg * 100)}%</span>
+                                                </button>
+                                            )
+                                        })}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    )
+                })()}
+
                 {/* ── View Toggle ── */}
                 <div className="flex items-center gap-3 mb-6">
                     <button

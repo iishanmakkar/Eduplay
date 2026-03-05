@@ -183,6 +183,43 @@ export default async function StudentDashboard() {
                         {/* Daily Challenge */}
                         <DailyChallengeCard />
 
+                        {/* AI Games Hub Card */}
+                        <div className="bg-gradient-to-br from-violet-900 via-slate-900 to-slate-900 rounded-3xl p-8 border border-violet-500/20 shadow-xl group relative overflow-hidden">
+                            <div className="absolute inset-0 bg-gradient-to-br from-violet-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+                            <div className="relative z-10">
+                                <div className="flex items-center justify-between mb-4">
+                                    <div className="flex items-center gap-3">
+                                        <div className="w-12 h-12 bg-violet-600/30 rounded-2xl flex items-center justify-center text-2xl border border-violet-500/30">🤖</div>
+                                        <div>
+                                            <h2 className="text-xl font-display font-black text-white">AI-Powered Learning</h2>
+                                            <p className="text-violet-300/70 text-xs font-medium">8 world-class AI games • Adaptive difficulty</p>
+                                        </div>
+                                    </div>
+                                    <Link href="/aipoweredgames" className="shrink-0 px-5 py-2.5 bg-violet-600 hover:bg-violet-500 text-white rounded-2xl font-bold text-sm transition-all shadow-lg shadow-violet-500/25 active:scale-95 whitespace-nowrap">
+                                        Explore →
+                                    </Link>
+                                </div>
+                                <div className="grid grid-cols-4 gap-2">
+                                    {[
+                                        { icon: '∞', label: 'AI Math', href: '/aipoweredgames/math-ai' },
+                                        { icon: '🏆', label: 'Olympiad', href: '/aipoweredgames/adaptive-challenge' },
+                                        { icon: '✍️', label: 'Essay AI', href: '/aipoweredgames/essay-ai' },
+                                        { icon: '🎯', label: 'Science', href: '/aipoweredgames/science-ai' },
+                                        { icon: '🗣️', label: 'Language', href: '/aipoweredgames/language-ai' },
+                                        { icon: '🎤', label: 'Debate', href: '/aipoweredgames/debate-ai' },
+                                        { icon: '🔭', label: 'Research', href: '/aipoweredgames/research-lab' },
+                                        { icon: '🚀', label: 'Projects', href: '/aipoweredgames/project-lab' },
+                                    ].map(g => (
+                                        <Link key={g.href} href={g.href}
+                                            className="flex flex-col items-center gap-1.5 p-2.5 bg-white/5 hover:bg-violet-500/20 rounded-xl transition-all hover:scale-105 active:scale-95 border border-white/5 hover:border-violet-500/30">
+                                            <span className="text-xl">{g.icon}</span>
+                                            <span className="text-[10px] font-bold text-slate-400 text-center leading-tight">{g.label}</span>
+                                        </Link>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+
                         {/* Play Now CTA */}
                         <div className="bg-slate-900 dark:bg-slate-800 rounded-3xl p-8 text-white relative overflow-hidden group border border-white/5">
                             <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-sky-500/10 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -243,12 +280,12 @@ export default async function StudentDashboard() {
                                                             {Math.round(m.masteryProbability * 100)}%
                                                         </span>
                                                         <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${m.masteryProbability >= 0.75
-                                                                ? 'bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400'
-                                                                : m.masteryProbability >= 0.5
-                                                                    ? 'bg-amber-50 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400'
-                                                                    : m.masteryProbability >= 0.25
-                                                                        ? 'bg-orange-50 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400'
-                                                                        : 'bg-rose-50 dark:bg-rose-900/30 text-rose-600 dark:text-rose-400'
+                                                            ? 'bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400'
+                                                            : m.masteryProbability >= 0.5
+                                                                ? 'bg-amber-50 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400'
+                                                                : m.masteryProbability >= 0.25
+                                                                    ? 'bg-orange-50 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400'
+                                                                    : 'bg-rose-50 dark:bg-rose-900/30 text-rose-600 dark:text-rose-400'
                                                             }`}>
                                                             {masteryLabel(m.masteryProbability)}
                                                         </span>
@@ -329,6 +366,11 @@ export default async function StudentDashboard() {
                                                 </h3>
                                                 <p className="text-xs text-slate-400">{classItem.teacher.firstName} {classItem.teacher.lastName} · Grade {classItem.grade}</p>
                                             </div>
+                                            <Link
+                                                href={`/dashboard/student/class/${classItem.id}/leaderboard`}
+                                                onClick={e => e.stopPropagation()}
+                                                className="shrink-0 px-3 py-1.5 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-500/30 text-amber-600 dark:text-amber-400 rounded-xl text-xs font-bold hover:bg-amber-100 dark:hover:bg-amber-900/40 transition-all"
+                                            >🏆 Rank</Link>
                                             <div className="text-emerald-500 font-bold opacity-0 group-hover:opacity-100 transition-opacity text-sm">View →</div>
                                         </Link>
                                     ))}

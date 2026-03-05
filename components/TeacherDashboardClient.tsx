@@ -172,6 +172,46 @@ export default function TeacherDashboardClient({ user, classes }: TeacherDashboa
                         </div>
                     )}
                 </div>
+
+                {/* Quick Actions */}
+                <div className="mt-10">
+                    <h2 className="text-lg font-display font-black text-slate-900 dark:text-white mb-5">Quick Actions</h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                        {[
+                            {
+                                icon: '🎮', title: '170+ Games Library',
+                                desc: 'Browse all games by subject & grade',
+                                href: '/games', color: 'emerald',
+                                bg: 'bg-emerald-50 dark:bg-emerald-900/20 border-emerald-100 dark:border-emerald-500/20',
+                            },
+                            {
+                                icon: '🤖', title: 'AI Games Hub',
+                                desc: 'Explore AI-powered adaptive games',
+                                href: '/aipoweredgames', color: 'violet',
+                                bg: 'bg-violet-50 dark:bg-violet-900/20 border-violet-100 dark:border-violet-500/20',
+                            },
+                            {
+                                icon: '🎯', title: 'AI Weakness Trainer',
+                                desc: 'See how targeted practice works',
+                                href: '/aipoweredgames/science-ai', color: 'amber',
+                                bg: 'bg-amber-50 dark:bg-amber-900/20 border-amber-100 dark:border-amber-500/20',
+                            },
+                            {
+                                icon: '📊', title: 'BKT Mastery Report',
+                                desc: 'Click any class → view heatmap',
+                                href: '/dashboard/teacher', color: 'sky',
+                                bg: 'bg-sky-50 dark:bg-sky-900/20 border-sky-100 dark:border-sky-500/20',
+                            },
+                        ].map(a => (
+                            <a key={a.href} href={a.href}
+                                className={`flex flex-col p-5 rounded-2xl border ${a.bg} hover:shadow-md transition-all group`}>
+                                <div className="text-3xl mb-3 group-hover:scale-110 transition-transform">{a.icon}</div>
+                                <div className="font-bold text-slate-900 dark:text-white text-sm mb-0.5">{a.title}</div>
+                                <div className="text-xs text-slate-500 dark:text-slate-400">{a.desc}</div>
+                            </a>
+                        ))}
+                    </div>
+                </div>
             </main>
 
             {/* Modals */}
