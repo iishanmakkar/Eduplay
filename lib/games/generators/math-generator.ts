@@ -101,8 +101,10 @@ export function genShapeSorterCity(): GenQuestion {
         if (!opts.includes(s.name)) opts[0] = s.name
         return { prompt: `${s.visual} This shape with ${s.sides} sides is called a?`, options: shuffle(opts), answer: s.name, visual: s.visual }
     }
-    const target = r(3, 8)
-    const match = SHAPES.find(x => x.sides === target) || SHAPES[r(0, SHAPES.length - 1)]
+    // Only pick side counts that exist in SHAPES array (0,3,4,5,6,8) — no 7-sided shape
+    const validSides = [...new Set(SHAPES.map(s => s.sides))]
+    const targetSides = validSides[r(0, validSides.length - 1)]
+    const match = SHAPES.find(x => x.sides === targetSides) || SHAPES[0]
     return { prompt: `Which shape has exactly ${match.sides} sides?`, options: makeOptions(match.name, SHAPES.filter(x => x.sides !== match.sides).slice(0, 3).map(x => x.name)), answer: match.name, visual: match.visual }
 }
 
@@ -432,7 +434,8 @@ export function genQuadraticQuest(): GenQuestion {
         const absX = x  // x is always positive here (r(1,6))
         return { prompt: `${a}x²=${val}. x=?`, options: makeOptions(`±${absX}`, [`±${absX + 1}`, `±${absX + 2}`, `${absX}`]), answer: `±${absX}`, visual: '🔮' }
     }
-    const p = r(1, 6), q = r(1, 6)
+    let p = r(1, 6), q = r(1, 6)
+    while (p === q) q = r(1, 6) // Guarantee 2 distinct roots (discriminant > 0)
     const b = -(p + q), c = p * q
     return { prompt: `How many real roots does x²${b >= 0 ? '+' : ''}${b}x+${c}=0 have?`, options: ['0 real roots', '1 real root', '2 distinct real roots', 'Infinite roots'], answer: '2 distinct real roots', visual: '🔮' }
 }

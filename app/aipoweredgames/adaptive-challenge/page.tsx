@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect, useRef } from 'react'
 import Link from 'next/link'
 
 interface AdaptiveQuestion {
@@ -38,6 +38,10 @@ export default function AdaptiveChallengePage() {
     const [streak, setStreak] = useState(0)
     const [total, setTotal] = useState(0)
     const [history, setHistory] = useState<{ correct: boolean; difficulty: number }[]>([])
+    const [showSummary, setShowSummary] = useState(false)
+    const [feedback, setFeedback] = useState<'correct' | 'wrong' | null>(null)
+    const hasFetchedRef = useRef(false)
+    const SESSION_LENGTH = 10
 
     const fetchQuestion = useCallback(async () => {
         setLoading(true)
@@ -54,6 +58,11 @@ export default function AdaptiveChallengePage() {
         setLoading(false)
     }, [subject, topic, gradeBand, difficulty])
 
+    // Auto-start on mount
+    useEffect(() => {
+        if (!hasFetchedRef.current) { hasFetchedRef.current = true; fetchQuestion() }
+    }, [fetchQuestion])
+
     const handleSelect = (opt: string) => {
         if (selected || !question) return
         const correct = opt === question.correctAnswer
@@ -62,15 +71,75 @@ export default function AdaptiveChallengePage() {
         if (correct) {
             setScore(s => s + (difficulty * 20))
             setStreak(s => s + 1)
-            setDifficulty(d => Math.min(5, d + (streak >= 2 ? 1 : 0)))  // Adaptive: increase after streak
+            setDifficulty(d => Math.min(5, d + (streak >= 2 ? 1 : 0)))
         } else {
             setStreak(0)
             setDifficulty(d => Math.max(1, d - 1))
         }
-        setHistory(h => [...h, { correct, difficulty }])
+        setFeedback(correct ? 'correct' : 'wrong')
+        const newHistory = [...history, { correct, difficulty }]
+        setHistory(newHistory)
+        if (newHistory.length >= SESSION_LENGTH) {
+            setTimeout(() => setShowSummary(true), 1600)
+        }
     }
 
-    const accuracy = total > 0 ? Math.round((score / (total * 3 * 20)) * 100) : 0
+    const accuracy = total > 0 ? Math.round((history.filter(h => h.correct).length / total) * 100) : 0
+
+    // Keyboard shortcuts
+    useEffect(() => {
+        const handler = (e: KeyboardEvent) => {
+            if (showSummary || loading) return
+            if (selected !== null && (e.key === 'Enter' || e.key === ' ')) { fetchQuestion(); return }
+            if (selected !== null || !question) return
+            const idx = parseInt(e.key) - 1
+            if (idx >= 0 && idx < (question.answerOptions?.length ?? 0)) handleSelect(question.answerOptions[idx])
+        }
+        window.addEventListener('keydown', handler)
+        return () => window.removeEventListener('keydown', handler)
+    }, [selected, question, handleSelect, fetchQuestion, showSummary, loading])
+
+    // Session summary
+    if (showSummary) {
+        const correctCount = history.filter(h => h.correct).length
+        const pct = Math.round((correctCount / SESSION_LENGTH) * 100)
+        const grade = pct >= 90 ? 'S' : pct >= 70 ? 'A' : pct >= 50 ? 'B' : 'C'
+        const gradeColor = grade === 'S' ? 'text-violet-400' : grade === 'A' ? 'text-emerald-400' : grade === 'B' ? 'text-blue-400' : 'text-amber-400'
+        return (
+            <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-amber-950/20 p-6 flex items-center justify-center">
+                <div className="max-w-md w-full rounded-3xl border border-slate-700/50 bg-slate-900/80 p-8 text-center space-y-6">
+                    <div className="text-6xl">🏆</div>
+                    <div>
+                        <div className={`text-7xl font-black ${gradeColor} mb-1`}>{grade}</div>
+                        <div className="text-white font-bold text-xl">Olympiad Complete</div>
+                        <div className="text-slate-400 text-sm mt-1">{SESSION_LENGTH} questions · Final difficulty: {'★'.repeat(difficulty)}</div>
+                    </div>
+                    <div className="grid grid-cols-3 gap-3">
+                        {[
+                            { label: 'Score', value: score, color: 'text-amber-400' },
+                            { label: 'Accuracy', value: `${pct}%`, color: 'text-emerald-400' },
+                            { label: 'Max Level', value: `${Math.max(...history.map(h => h.difficulty))}/5`, color: 'text-violet-400' },
+                        ].map(s => (
+                            <div key={s.label} className="rounded-xl bg-slate-800/60 border border-slate-700/50 p-3">
+                                <div className={`text-2xl font-black ${s.color}`}>{s.value}</div>
+                                <div className="text-slate-500 text-xs mt-0.5">{s.label}</div>
+                            </div>
+                        ))}
+                    </div>
+                    <div className="flex gap-1 justify-center">
+                        {history.map((h, i) => (
+                            <div key={i} className={`w-3 h-3 rounded-full ${h.correct ? 'bg-emerald-500' : 'bg-red-500'}`} title={h.correct ? '✓' : '✗'} />
+                        ))}
+                    </div>
+                    <div className="space-y-3">
+                        <button onClick={() => { setScore(0); setTotal(0); setStreak(0); setHistory([]); setShowSummary(false); setDifficulty(3); fetchQuestion() }}
+                            className="w-full py-3.5 rounded-xl bg-amber-600 hover:bg-amber-500 text-white font-bold transition-all active:scale-95">Play Again 🏅</button>
+                        <Link href="/aipoweredgames" className="block w-full py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold transition-all text-center">← AI Games Hub</Link>
+                    </div>
+                </div>
+            </div>
+        )
+    }
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-amber-950/20 p-6">

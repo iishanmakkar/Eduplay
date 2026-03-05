@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useCallback, useRef } from 'react'
+import { useState, useCallback, useEffect, useRef } from 'react'
 import Link from 'next/link'
 
 interface EssayRubric {
@@ -34,6 +34,8 @@ export default function EssayAIPage() {
     const [evaluating, setEvaluating] = useState(false)
     const wordCount = essay.trim().split(/\s+/).filter(Boolean).length
     const clampScore = (n: unknown, max = 100) => Math.round(Math.max(0, Math.min(max, isFinite(Number(n)) ? Number(n) : 0)))
+    const targetWordCount = gradeBand === '35' ? 100 : gradeBand === '68' ? 200 : 350
+    const hasFetchedRef = useRef(false)
 
     const fetchPrompt = useCallback(async () => {
         setLoading(true)
@@ -64,6 +66,11 @@ export default function EssayAIPage() {
         } catch { /* ignore */ }
         setLoading(false)
     }, [subject, gradeBand])
+
+    // Auto-fetch first prompt on mount
+    useEffect(() => {
+        if (!hasFetchedRef.current) { hasFetchedRef.current = true; fetchPrompt() }
+    }, [fetchPrompt])
 
     const handleEvaluate = useCallback(async () => {
         if (!essay.trim() || !question) return
